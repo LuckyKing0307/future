@@ -20,6 +20,12 @@ return new class extends Migration
             $table->string('payment');
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('tariff_id');
+            $table->timestamps();
+        });
     }
 
     /**
