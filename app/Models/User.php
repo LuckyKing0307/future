@@ -74,7 +74,7 @@ class User extends Authenticatable
         'created_at',
     ];
 
-    public function points()
+    public function pointsFunction()
     {
         $points = Points::where(['user_id'=>$this->id])->sum('points');
         return $points;

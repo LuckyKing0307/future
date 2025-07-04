@@ -17,7 +17,7 @@
 
             <!-- синяя карточка с балансом -->
             <div class="mt-4 rounded-xl bg-indigo-200/70 p-3 text-indigo-900 space-y-0.5">
-                <p><span class="font-semibold">Balance:</span>$ {{$user->points()}}</p>
+                <p><span class="font-semibold">Balance:</span>$ {{$user->pointsFunction()}}</p>
                 <p><span class="font-semibold">Deposit:</span>$ {{$user->payments()}}</p>
                 <p class="text-xs text-gray-700 pt-1">Tasks: {{$user->tasks()->count()}}</p>
 

@@ -5,7 +5,7 @@
     <div class="pricing-grid">
         <div class="card">
             <span class="title">Earned</span>
-            <span class="price">$ {{$user->points()}}</span>
+            <span class="price">$ {{$user->pointsFunction()}}</span>
         </div>
         <div class="card">
             <span class="title">Spend</span>
@@ -23,7 +23,7 @@
                     <i class="ti ti-user-filled"></i>
                     <span class="masked">****{{$user->id}}</span>
                 </div>
-                <span class="price">$ {{$user->points()}}</span>
+                <span class="price">$ {{$user->pointsFunction()}}</span>
             </li>
         @endforeach
     </ul>
