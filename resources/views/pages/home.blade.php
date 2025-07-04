@@ -11,14 +11,6 @@
             <span class="title">Spend</span>
             <span class="price">$ {{$user->payments()}}</span>
         </div>
-        <div class="card">
-            <span class="title">Member</span>
-            <span class="price">$864</span>
-        </div>
-        <div class="card">
-            <span class="title">Member</span>
-            <span class="price">$864</span>
-        </div>
     </div>
 </div>
 <div class="member-card">
