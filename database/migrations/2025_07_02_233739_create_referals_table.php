@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('is_referal');
+            $table->string('is_referal')->nullable();
         });
     }
 
@@ -21,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('referals');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('is_referal');
+        });
     }
 };
