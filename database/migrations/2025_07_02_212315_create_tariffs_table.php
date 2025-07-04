@@ -22,7 +22,7 @@ return new class extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->string('tariff_id');
+            $table->string('tariff_id')->nullable();
         });
     }
 
