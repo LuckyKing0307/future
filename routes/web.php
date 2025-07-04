@@ -18,6 +18,7 @@ Route::get('/', function () {
     Route::post('/end', [CompletedController::class, 'end'])->name('end');
     Route::post('/task-take', [RecieveController::class, 'takeTask'])->name('take-task');
 
+    Route::post('/withdrawal', [RecieveController::class, 'withdrawal'])->name('withdrawal.submit');
 
 //    BUY
     Route::get('/tariffs', [BuyController::class, 'index'])->name('tariffs');

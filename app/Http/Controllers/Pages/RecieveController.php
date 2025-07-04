@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Points;
 use App\Models\Tasks;
 use App\Models\User;
+use App\Models\Withdrawal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,6 +35,18 @@ class RecieveController extends Controller
             $youtubes = $public->merge($tasks->get(2, collect()));
         }
         return view('pages.recieve', compact('tiktoks', 'facebooks', 'youtubes'));
+    }
+
+    public function withdrawal(Request $request)
+    {
+        $user = Auth::id();
+        $amount = $request->all()['amount'];
+
+        $with = Withdrawal::create([
+            'user_id' => $user,
+            'status' => 'new',
+            'amount' => $amount
+        ]);
     }
 
     public function takeTask(Request $request)
