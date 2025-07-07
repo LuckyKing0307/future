@@ -2,6 +2,7 @@
 
 namespace App\Orchid\Screens;
 
+use App\Models\Payments;
 use App\Models\Payments as Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -65,8 +66,17 @@ class PaymentsListScreen extends Screen
     {
         $payment->update(['status' => 'approved']);
         $user = User::find($payment->user_id);
-        $user->tariff_id = $payment->tariff;
-        $user->save();
+        if ($payment->tariff){
+            $user->tariff_id = $payment->tariff;
+            $user->save();
+        }
+        if ($user->is_referal){
+            Payments::create([
+                'user_id'=>$user->is_referal,
+                'status'=>'approved',
+                'amount'=>intval($payment->amount)/10,
+            ]);
+        }
         Toast::success("Платёж #{$payment->id} одобрен");
     }
 
