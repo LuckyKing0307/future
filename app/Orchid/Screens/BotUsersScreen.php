@@ -67,7 +67,7 @@ class BotUsersScreen extends Screen
     }
 
 
-    public function asyncGetGame(BotUser $user): array
+    public function asyncGetGame(User $user): array
     {
         return [
             'user' => $user
@@ -88,7 +88,7 @@ class BotUsersScreen extends Screen
         BotUser::find($request->input('user.id'))->update($user);
     }
 
-    public function delete(BotUser $user)
+    public function delete(User $user)
     {
         $user->delete();
     }
