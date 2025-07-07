@@ -39,6 +39,7 @@ class CompletedController extends Controller
             ['label' => 'Add Money', 'badge' => null, 'href'=> route('add_amount')],
             ['label' => 'History', 'badge' => null, 'href'=> route('history')],
             ['label' => 'Team size', 'badge' => $user->refferals()->count(), 'href'=> route('team')],
+            ['label' => 'Support', 'badge' => null, 'href'=> route('history')],
             ['label' => 'Log out', 'badge' => null, 'href'=> route('data.logout')],
         ];
         return view('pages.me', ['items' => $items, 'user' => $user]);
