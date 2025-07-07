@@ -15,7 +15,7 @@ class RecieveController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user->tariff()-$user->todayTasks()<=0){
+        if((($user->tariff()->usage)-$user->todayTasks())<=0){
             $tiktoks = [];                            // только «нулевые»
             $facebooks = [];
             $youtubes = [];

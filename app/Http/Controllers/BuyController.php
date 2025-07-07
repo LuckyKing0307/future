@@ -24,14 +24,25 @@ class BuyController extends Controller
         $tariff = Tariffs::where('id', $id)->first();
         return view('pages.tariff', ['tariff' => $tariff, 'assets' => $assets]);
     }
-    public function buy($asset,$id){
+    public function buy($asset,$id,$fixed=null){
         $user = Auth::id();
-        Payments::create([
-            'user_id'=>$user,
-            'status'=>'new',
-            'type'=>$asset,
-            'tariff'=>$id,
-        ]);
+        if ($fixed){
+            Payments::create([
+                'user_id'=>$user,
+                'status'=>'new',
+                'type'=>$asset,
+                'amount'=>$id,
+            ]);
+        }else{
+            $tariff = Tariffs::find($id);
+            Payments::create([
+                'user_id'=>$user,
+                'status'=>'new',
+                'type'=>$asset,
+                'tariff'=>$id,
+                'amount'=>$tariff->price,
+            ]);
+        }
         return redirect()->route('tariffs');
     }
 }

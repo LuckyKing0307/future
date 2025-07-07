@@ -36,8 +36,9 @@ class CompletedController extends Controller
         $user = Auth::user();
         $items = [
             ['label' => 'Withdrawal', 'badge' => null, 'href'=> route('withdrawal')],
-            ['label' => 'Invite friends', 'badge' => null, 'href'=> route('invite')],
-            ['label' => 'Team size', 'badge' => 0, 'href'=> route('team')],
+            ['label' => 'Add Money', 'badge' => null, 'href'=> route('add_amount')],
+            ['label' => 'History', 'badge' => null, 'href'=> route('history')],
+            ['label' => 'Team size', 'badge' => $user->refferals()->count(), 'href'=> route('team')],
             ['label' => 'Log out', 'badge' => null, 'href'=> route('data.logout')],
         ];
         return view('pages.me', ['items' => $items, 'user' => $user]);

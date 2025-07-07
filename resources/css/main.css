@@ -60,7 +60,7 @@ body{
     padding: 12px 0;
 }
 .logo2{
-    width: 40%;
+    width: 30%;
 }
 .logo2 img{
     width: 100%;
@@ -391,9 +391,22 @@ input:focus{
     border-radius: 1.25rem;
     box-shadow: 0 12px 32px rgba(0,0,0,.45);
 }
-#crypto{
-    width: 100%;
+#crypto,#amount{
+    width: 100% !important;
     color: black !important;
+    border: 1px solid black !important;
+}
+.burger{
+    width: 50px;
+    height: 50px;
+}
+.burger a{
+    display: block !important;
+    width: 100% !important;
+}
+.burger img{
+    display: block !important;
+    width: 100% !important;
 }
 /* ---- варианты криптовалют ---- */
 .crypto-option{

@@ -3,6 +3,7 @@
 @section('title', 'Вход')
 
 @section('content')
+    {{session('is_referal')}}
     <section class="max-w-md mx-auto my-12 login_page">
         <div class="welcome_header">
             <div class="logo">

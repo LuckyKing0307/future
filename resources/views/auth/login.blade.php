@@ -3,6 +3,7 @@
 @section('title', 'Вход')
 
 @section('content')
+    {{session('is_referal')}}
     <section class="max-w-md mx-auto my-12 login_page">
         <div class="welcome_header">
             <div class="logo">
@@ -23,6 +24,15 @@
                         @endforeach
                     </div>
                 @endif
+                <label class="" style="flex-direction: row; align-content: center !important; flex-wrap: wrap !important;">
+                    <span class="ml-2 text-sm">Запомнить&nbsp;меня</span>
+                    <input
+                        id="remember"
+                        type="checkbox"
+                        name="remember"
+                        style="width: 15px !important; height: 15px !important; margin:0 !important; margin-left: 10px !important;"
+                    >
+                </label>
                 <button type="submit" class="btn-primary w-full main_btn">Войти</button>
                 <a href="{{route('register')}}" class="main_href">Registration</a>
             </form>

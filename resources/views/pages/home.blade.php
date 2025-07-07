@@ -21,7 +21,7 @@
             <li class="member-item">
                 <div class="item-info">
                     <i class="ti ti-user-filled"></i>
-                    <span class="masked">****{{$user->id}}</span>
+                    <span class="masked">****{{substr($user->phone, -4)}}</span>
                 </div>
                 <span class="price">$ {{$user->pointsFunction()}}</span>
             </li>

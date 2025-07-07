@@ -19,6 +19,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
+        $referrerId = session('is_referal') ?? null;
         Validator::make($input, [
             'phone'    => ['required', 'string', 'regex:/^\+998\d{9}$/', 'unique:users,phone'],
             'password' => $this->passwordRules(),
@@ -28,6 +29,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => 'User',
             'phone' => $input['phone'],
             'password' => Hash::make($input['password']),
+            'is_referal' => $referrerId,
         ]);
     }
 }

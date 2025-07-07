@@ -14,5 +14,6 @@ class Payments extends Model
         'status',
         'type',
         'tariff',
+        'amount',
     ];
 }

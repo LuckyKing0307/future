@@ -98,6 +98,7 @@ Route::screen('example', ExampleScreen::class)
 
 Route::screen('/botroles', BotRolesScreen::class)->name('bot.roles');
 Route::screen('/tarifs', \App\Orchid\Screens\TariffsScreen::class)->name('tarifs');
+Route::screen('/withdrawals', \App\Orchid\Screens\WithdrawalScreen::class)->name('withdrawals');
 Route::screen('/payments', \App\Orchid\Screens\PaymentsListScreen::class)->name('payments');
 Route::screen('/botusers', BotUsersScreen::class)->name('bot.users');
 Route::screen('/tasks', TasksScreen::class)->name('bot.tasks');

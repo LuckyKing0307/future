@@ -7,12 +7,11 @@
             <div class="flex items-center gap-3">
                 <!-- аватар -->
                 <div class="flex-1">
-                    <p class="font-semibold">{{$user->phone}}</p>
-                    <p class="text-xs text-gray-500">****{{$user->id}}</p>
+                    <p class="text-xs text-gray-500">****{{substr($user->phone, -4)}}</p>
                 </div>
 
                 <!-- X-C3 “лого” -->
-                <span class="font-extrabold text-xl tracking-wide">X-C3</span>
+                <span class="font-extrabold text-xl tracking-wide">{{$user->tariff()?->name}}</span>
             </div>
 
             <!-- синяя карточка с балансом -->

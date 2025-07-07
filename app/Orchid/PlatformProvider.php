@@ -91,6 +91,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.people')
                 ->route('tarifs'),
 
+            Menu::make(__('Вывод средств'))
+                ->icon('bs.coin')
+                ->route('withdrawals'),
+
             Menu::make(__('Платежи'))
                 ->icon('bs.box')
                 ->route('payments'),

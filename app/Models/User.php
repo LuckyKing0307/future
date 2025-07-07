@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'tariff_id',
+        'is_referal',
     ];
 
     /**
@@ -41,24 +42,26 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'permissions'          => 'array',
-        'email_verified_at'    => 'datetime',
+        'permissions' => 'array',
+        'email_verified_at' => 'datetime',
     ];
+
     public function username(): string
     {
         return 'phone';
     }
+
     /**
      * The attributes for which you can use filters in url.
      *
      * @var array
      */
     protected $allowedFilters = [
-           'id'         => Where::class,
-           'name'       => Like::class,
-           'email'      => Like::class,
-           'updated_at' => WhereDateStartEnd::class,
-           'created_at' => WhereDateStartEnd::class,
+        'id' => Where::class,
+        'name' => Like::class,
+        'email' => Like::class,
+        'updated_at' => WhereDateStartEnd::class,
+        'created_at' => WhereDateStartEnd::class,
     ];
 
     /**
@@ -76,16 +79,24 @@ class User extends Authenticatable
 
     public function pointsFunction()
     {
-        $points = Points::where(['user_id'=>$this->id])->sum('points');
-        return $points;
+        $payments = Payments::where(['user_id' => $this->id])->where(['status' => 'approved'])->sum('amount');
+        $withdrawal = Withdrawal::where(['user_id' => $this->id])->where(['status' => 'approved'])->sum('amount');
+        $points = Points::where(['user_id' => $this->id])->sum('points');
+        return $points+$payments-$withdrawal;
     }
-
 
     public function tasks()
     {
-        $points = Tasks::where(['user_id'=>$this->id]);
+        $points = Tasks::where(['user_id' => $this->id]);
         return $points;
     }
+
+    public function refferals()
+    {
+        $refferals = User::where(['is_referal' => $this->id])->get();
+        return $refferals;
+    }
+
     public function payments()
     {
         $total = DB::table('payments')
@@ -97,13 +108,14 @@ class User extends Authenticatable
 
     public function tariff()
     {
-        return $this->tariff_id ? Tariffs::find($this->tariff_id)->usage : 0;
+        return Tariffs::find($this->tariff_id);
     }
 
 
-    public function todayTasks(){
+    public function todayTasks()
+    {
         $todayStart = Carbon::today();        // 00:00:00
-        $todayEnd   = Carbon::today()->endOfDay();
+        $todayEnd = Carbon::today()->endOfDay();
         return Tasks::where('user_id', $this->id)
             ->whereBetween('took_at', [$todayStart, $todayEnd])
             ->count();
