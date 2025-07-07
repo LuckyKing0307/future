@@ -132,7 +132,7 @@ class TariffsScreen extends Screen
 
     public function create(Request $request)
     {
-        Tariff::create($request->input('tariff'));
+        Tariffs::create($request->input('tariff'));
         Toast::info('Тариф создан');
     }
 
