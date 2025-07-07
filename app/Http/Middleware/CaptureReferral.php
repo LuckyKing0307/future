@@ -17,7 +17,7 @@ class CaptureReferral
     public function handle(Request $request, Closure $next): Response
     {
         if ($code = $request->query('ref')) {
-            if ($referrer = User::find($code)->first()) {
+            if ($referrer = User::find($code)) {
                 session(['is_referal' => $referrer->id]);
             }
         }
