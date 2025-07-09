@@ -471,3 +471,18 @@ input:focus{
     opacity:.92;
 }
 #payBtn:disabled{opacity:.4;cursor:not-allowed}
+
+.sq-btn{
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 6px 12px;
+    border-radius: 12px;
+}
+
+/* При наведении просто делаем чуть прозрачнее */
+.sq-btn:hover{
+    opacity: .8;
+}
+.youtube { background: #FF0000; }   /* YouTube */
+.facebook { background: #1877F2; }   /* Facebook */
+.tiktok { background: #000000; }

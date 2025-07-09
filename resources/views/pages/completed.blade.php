@@ -15,8 +15,8 @@
                         data-description="{{$task->description}}">
                         <div class="promo-item-data">
                             <div class="left">
-                                <img src="{{asset('images/'.$type[$task->importance].'.png')}}" alt="TikTok">
-                                <span class="app-name">{{$task->name}}</span>
+                                <img src="{{asset('images/'.$type[$task->importance].'.png')}}" alt="{{$type[$task->importance]}}">
+                                <span class="app-name"><a href="{{$task->name}}" class="sq-btn  {{$type[$task->importance]}}">{{strtoupper($type[$task->importance])}}</a></span>
                             </div>
                             <span class="price">${{$task->points}}</span>
                         </div>
@@ -39,8 +39,8 @@
                         data-description="{{$task->description}}">
                         <div class="promo-item-data">
                             <div class="left">
-                                <img src="{{asset('images/'.$type[$task->importance].'.png')}}" alt="TikTok">
-                                <span class="app-name">{{$task->name}}</span>
+                                <img src="{{asset('images/'.$type[$task->importance].'.png')}}" alt="{{$type[$task->importance]}}">
+                                <span class="app-name"><a href="{{$task->name}}" class="sq-btn {{$type[$task->importance]}}">{{strtoupper($type[$task->importance])}}</a></span>
                             </div>
                             <span class="price">${{$task->points}}</span>
                         </div>
