@@ -55,6 +55,7 @@ class CompletedController extends Controller
         $data = $request->all();
         $task = Tasks::find($data['id']);
         $task->did_at = Carbon::now();
+        $task->status = 'check';
         $task->photo = $path;
         $botUserId = Auth::id();
         Points::create([
