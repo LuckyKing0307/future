@@ -13,6 +13,7 @@ class HomeController extends Controller
     public function index(){
         $user = Auth::user();
         $users = User::all();
+
         return view('pages.home', compact('user', 'users'));
     }
 }

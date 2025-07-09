@@ -47,6 +47,7 @@ class WithdrawalScreen extends Screen
                 TD::make('id', 'ID')->sort(),
 
                 TD::make('user_id', 'User ID'),
+                TD::make('recivers', 'Credentails'),
 
                 TD::make('amount', 'Amount')
                     ->align(TD::ALIGN_RIGHT)

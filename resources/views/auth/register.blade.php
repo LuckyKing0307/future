@@ -5,9 +5,9 @@
 @section('content')
     {{session('is_referal')}}
     <section class="max-w-md mx-auto my-12 login_page">
-        <div class="welcome_header">
+        <div class="welcome_header1">
             <div class="logo">
-                <img src="{{asset('images/logo.svg')}}" alt="">
+                <img src="{{asset('images/logo.png')}}" alt="">
             </div>
         </div>
         <div class="welcome_form">
@@ -15,7 +15,7 @@
 
             <form method="POST" action="{{ route('register') }}" class="space-y-4 ">
                 @csrf
-                <label>Phone number<input type="text"  name="phone" placeholder="+998991234567" required class="input w-full"></label>
+                <label>Phone number<input type="text"  name="phone" placeholder="Номер телефона" required class="input w-full"></label>
                 <label>Password<input type="password" name="password" placeholder="Пароль" required class="input w-full"></label>
                 <label>Confirm password<input type="password" name="password_confirmation" placeholder="Повторите пароль" required class="input w-full"></label>
                 @if ($errors->any())

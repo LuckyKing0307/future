@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
         'tariff_id',
         'is_referal',
+        'recivers',
+        'tariff_at'
     ];
 
     /**
@@ -79,10 +81,33 @@ class User extends Authenticatable
 
     public function pointsFunction()
     {
-        $payments = Payments::where(['user_id' => $this->id])->where(['status' => 'approved'])->sum('amount');
         $withdrawal = Withdrawal::where(['user_id' => $this->id])->where(['status' => 'approved'])->sum('amount');
         $points = Points::where(['user_id' => $this->id])->sum('points');
-        return $points+$payments-$withdrawal;
+        return $points-$withdrawal;
+    }
+    public function daysLeft()
+    {
+        $daysLeft = Carbon::parse($this->tariff_at)
+        ->addYear()
+        ->diffInDays(now(), false);
+        $per = (round($daysLeft)*-1)/365*100;
+        return [
+            'days' => round($daysLeft)*-1,
+            'precentage' => $per,
+        ];
+    }
+    public function earned()
+    {
+        $points = Points::where(['user_id' => $this->id])->sum('points');
+        return $points;
+    }
+
+    public function earnedToday()
+    {
+        $pointsToday = Points::where('user_id', $this->id)
+            ->whereBetween('created_at', [now()->startOfDay(), now()])
+            ->sum('points');
+        return $pointsToday;
     }
 
     public function tasks()

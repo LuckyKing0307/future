@@ -5,11 +5,11 @@
     <div class="pricing-grid">
         <div class="card">
             <span class="title">Earned</span>
-            <span class="price">$ {{$user->pointsFunction()}}</span>
+            <span class="price">$ {{$user->earned()}}</span>
         </div>
         <div class="card">
-            <span class="title">Spend</span>
-            <span class="price">$ {{$user->payments()}}</span>
+            <span class="title">Earned today</span>
+            <span class="price">$ {{$user->earnedToday()}}</span>
         </div>
     </div>
 </div>

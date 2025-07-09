@@ -19,14 +19,19 @@ class PagesController extends Controller
     }
     public function createWithdrawal(Request $request){
         $data = $request->all();
-        $user = Auth::id();
+        $user = Auth::user();
+        if($user->recivers!=$data['recivers']){
+            $user->recivers = $data['recivers'];
+            $user->save();
+        }
         $task = Withdrawal::create([
-            'user_id' => $user,
+            'user_id' => $user->id,
             'amount' => $data['amount'],
+            'recivers' => $data['recivers'],
             'status' => 'new',
         ]);
         $history = History::create([
-            'user_id' => $user,
+            'user_id' => $user->id,
             'type' => 'withdrawal',
             'status' => 'new',
             'referance_id' => $task->id,

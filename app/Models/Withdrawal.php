@@ -13,5 +13,6 @@ class Withdrawal extends Model
         'user_id',
         'status',
         'amount',
+        'recivers'
     ];
 }

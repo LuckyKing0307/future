@@ -16,7 +16,8 @@ class RecieveController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if((($user->tariff()?->usage)-$user->todayTasks())<=0){
+        $took_qty = (($user->tariff()?->usage)-$user->todayTasks());
+        if($took_qty<=0){
             $tiktoks = [];                            // только «нулевые»
             $facebooks = [];
             $youtubes = [];
@@ -35,7 +36,7 @@ class RecieveController extends Controller
             $facebooks = $public->merge($tasks->get(1, collect()));
             $youtubes = $public->merge($tasks->get(2, collect()));
         }
-        return view('pages.recieve', compact('tiktoks', 'facebooks', 'youtubes'));
+        return view('pages.recieve', compact('tiktoks', 'facebooks','took_qty', 'youtubes'));
     }
 
     public function withdrawal(Request $request)

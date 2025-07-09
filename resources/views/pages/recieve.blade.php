@@ -1,5 +1,7 @@
 @extends('layouts.main')
 @section('content')
+    <div class="end_btn">Осталось заданий на сегодня {{$took_qty}}</div>
+
     <!-- табы -->
     <div class="tab-bar">
         <button class="tab active" data-target="tab-tiktok">TikTok</button>
