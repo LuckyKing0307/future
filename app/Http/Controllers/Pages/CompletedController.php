@@ -57,14 +57,13 @@ class CompletedController extends Controller
         $task->did_at = Carbon::now();
         $task->status = 'check';
         $task->photo = $path;
+        $task->save();
         $botUserId = Auth::id();
         Points::create([
             'user_id' => $botUserId,
             'task_id' => $task->id,
             'points' => $task->points,
         ]);
-        $task->status = 'check';
-        $task->save();
         return redirect()->route('completed');
     }
 }
