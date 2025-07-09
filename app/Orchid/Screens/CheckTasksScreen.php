@@ -3,7 +3,9 @@
 namespace App\Orchid\Screens;
 
 use App\Models\BotUser;
+use App\Models\Points;
 use App\Models\Tasks;
+use App\Models\User;
 use App\Orchid\Layouts\Tasks\MessageRows;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -91,20 +93,11 @@ class CheckTasksScreen extends Screen
         $task->took_at = Carbon::now();
         $task->save();
         $telegram = new Api();
-        $user = BotUser::find($task->person);
-        if ($user->telegram_id){
-            $task->user_id = $user->id;
-            $task->save();
-            $task_text = "Задание принято: ".$task->name.
-                "\n\nОписание: ".$task->description.
-                "\n\nОчков заработано: ".$task->points.
-                "\nДедлайн: ".Carbon::make($task->deadline)->format('d-m-Y H:i:s').
-                "\nПринято: ". $task->took_at->format('d-m-Y H:i:s');
-            $telegram->sendMessage([
-                'chat_id' => $user->telegram_id,
-                'text' => $task_text,
-            ]);
-        }
+        Points::create([
+            'user_id' => $task->person,
+            'task_id' => $task->id,
+            'points' => $task->points,
+        ]);
     }
 
     public function sendMessage(Request $request)
