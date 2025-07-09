@@ -50,7 +50,6 @@ class CompletedController extends Controller
         $request->validate([
             'photo' => 'required|image|max:2048', // до 2 МБ
         ]);
-        info($request->file('photo'));
         $path = $request->file('photo')
             ->store('task-photos', 'public');
         $data = $request->all();

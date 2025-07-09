@@ -65,6 +65,10 @@
     </div>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script>
+        FilePond.setOptions({
+            instantUpload: false, // отключает авто-upload
+            storeAsFile  : true   // вкладывает File-объект в форму
+        });
         FilePond.parse(document.body);
         const csrfToken = "{{ csrf_token() }}";
         /* --- табы --- */
