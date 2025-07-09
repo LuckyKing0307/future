@@ -26,23 +26,9 @@ class EditRows extends Rows
     {
         return [
             Input::make('user.id')->hidden(),
-            Input::make('user.login')
-                ->disabled(),
-            Input::make('user.name')
-                ->title('Имя')
+            Input::make('user.payment')
+                ->title('Платеж')
                 ->placeholder('Игорь')
-                ->required(),
-            Input::make('user.surname')
-                ->title('Фамилия')
-                ->placeholder('Игорев')
-                ->required(),
-            Input::make('user.phone_number')
-                ->title('Телефон')
-                ->mask('(99)999-9999')
-                ->required(),
-            Relation::make('user.role')
-                ->fromModel(BotRoles::class, 'role_name', 'id')
-                ->title('Выберите роль сотрудника')
                 ->required(),
         ];
     }

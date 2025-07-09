@@ -4,6 +4,7 @@ namespace App\Orchid\Layouts\BotUsers;
 
 use App\Models\BotRoles;
 use App\Models\BotUser;
+use App\Models\Payments as Payment;
 use App\Models\User;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
@@ -33,6 +34,15 @@ class UsersList extends Table
             TD::make('id', 'ID'),
             TD::make('login', 'Логин')->render(function (User $user){
                 return "<a href='botuser/$user->id' style='text-decoration: underline;'>$user->phone</a>";
+            }),
+            TD::make('Add Founds')->render(function (User $game){
+                return ModalToggle::make('Edit')
+                    ->modal('editModal')
+                    ->method('update')
+                    ->modalTitle('Edit Game')
+                    ->asyncParameters([
+                        'user' => $game->id
+                    ]);
             }),
             TD::make('Удалить')
                 ->alignCenter()

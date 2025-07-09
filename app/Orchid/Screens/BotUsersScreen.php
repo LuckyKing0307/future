@@ -3,6 +3,8 @@
 namespace App\Orchid\Screens;
 
 use App\Models\BotUser;
+use App\Models\Payments;
+use App\Models\Tariffs;
 use App\Models\User;
 use App\Orchid\Layouts\BotRoles\CreateRow;
 use App\Orchid\Layouts\BotUsers\CreateRows;
@@ -85,7 +87,13 @@ class BotUsersScreen extends Screen
     public function update(Request $request): void
     {
         $user = $request->toArray()['user'];
-        BotUser::find($request->input('user.id'))->update($user);
+        Payments::create([
+            'user_id'=>$user['id'],
+            'status'=>'new',
+            'type'=>'Admin',
+            'tariff'=>null,
+            'amount'=>$user['payment'],
+        ]);
     }
 
     public function delete(User $user)
