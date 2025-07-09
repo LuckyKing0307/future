@@ -52,7 +52,7 @@
                         <br>
                         <form action="{{route('end')}}" method="POST"  enctype="multipart/form-data">
                             @csrf
-                            <input type="file" name="photo" value="{{$task->id}}"  class="filepond" required>
+                            <input type="file" name="photo" class="filepond" required>
                             <input type="text" name="id" value="{{$task->id}}" hidden>
                             <button class="end_btn">Завершить</button>
                         </form>
