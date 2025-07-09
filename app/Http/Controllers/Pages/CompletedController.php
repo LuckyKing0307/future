@@ -56,14 +56,8 @@ class CompletedController extends Controller
         $task = Tasks::find($data['id']);
         $task->did_at = Carbon::now();
         $task->status = 'check';
-        $task->photo = $path;
+        $task->photo = json_encode(['path' => $path]);;
         $task->save();
-        $botUserId = Auth::id();
-        Points::create([
-            'user_id' => $botUserId,
-            'task_id' => $task->id,
-            'points' => $task->points,
-        ]);
         return redirect()->route('completed');
     }
 }

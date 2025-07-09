@@ -27,14 +27,9 @@ class CheckTasksScreen extends Screen
         $telegram = new Api();
         $task_data = Tasks::find($task);
         $photos = [];
-        if ($task_data->photo){
-            foreach (json_decode($task_data->photo,1) as $photo){
-                if (isset($photo[0])){
-                    $photos[] = $telegram->getFile(['file_id' => $photo[3]['file_id']])['file_path'];
-                }else{
-                    $photos[0] = $telegram->getFile(['file_id' => $photo['file_id']])['file_path'];
-                }
-            }
+        $photo = json_decode($task_data->photo,1);
+        if (isset($photo['path'])){
+            $photos[] = storage_path('app/public/'.$photo['path']);
         }
         return [
             'task' => Tasks::find($task),
