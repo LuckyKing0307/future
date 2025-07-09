@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Payments;
 use App\Models\Tariffs;
 use App\Models\User;
@@ -27,7 +28,7 @@ class BuyController extends Controller
     public function buy($asset,$id,$fixed=null){
         $user = Auth::id();
         if ($fixed){
-            Payments::create([
+            $payment = Payments::create([
                 'user_id'=>$user,
                 'status'=>'new',
                 'type'=>$asset,
@@ -35,7 +36,7 @@ class BuyController extends Controller
             ]);
         }else{
             $tariff = Tariffs::find($id);
-            Payments::create([
+            $payment = Payments::create([
                 'user_id'=>$user,
                 'status'=>'new',
                 'type'=>$asset,
@@ -43,6 +44,12 @@ class BuyController extends Controller
                 'amount'=>$tariff->price,
             ]);
         }
+        $history = History::create([
+            'user_id' => $user,
+            'type' => 'payment',
+            'status' => 'new',
+            'referance_id' => $payment->id,
+        ]);
         return redirect()->route('tariffs');
     }
 }

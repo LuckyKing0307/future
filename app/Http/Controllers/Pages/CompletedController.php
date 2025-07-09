@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\BotUser;
+use App\Models\History;
 use App\Models\Points;
 use App\Models\Tasks;
 use App\Models\User;
@@ -47,6 +48,7 @@ class CompletedController extends Controller
 
     public function end(Request $request)
     {
+        $user = Auth::id();
         $request->validate([
             'photo' => 'required|image|max:2048', // до 2 МБ
         ]);
@@ -58,6 +60,16 @@ class CompletedController extends Controller
         $task->status = 'check';
         $task->photo = json_encode(['path' => $path]);;
         $task->save();
+
+
+        $history = History::where([
+            ['user_id' ,'=', $user],
+            ['type' ,'=', 'task'],
+            ['referance_id' ,'=', $task->id],
+        ]);
+        if ($history->exists()){
+            $history->first()->status = 'check';
+        }
         return redirect()->route('completed');
     }
 }

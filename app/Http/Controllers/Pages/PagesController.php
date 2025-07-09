@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\History;
 use App\Models\Payments;
 use App\Models\Tariffs;
 use App\Models\WaitRequest;
@@ -19,11 +20,20 @@ class PagesController extends Controller
     public function createWithdrawal(Request $request){
         $data = $request->all();
         $user = Auth::id();
-        Withdrawal::create([
+        $task = Withdrawal::create([
             'user_id' => $user,
             'amount' => $data['amount'],
             'status' => 'new',
         ]);
+        $history = History::create([
+            'user_id' => $user,
+            'type' => 'withdrawal',
+            'status' => 'new',
+            'referance_id' => $task->id,
+        ]);
+        if ($history->exists()){
+            $history->first()->status = 'check';
+        }
         return redirect()->route('me');
     }
 

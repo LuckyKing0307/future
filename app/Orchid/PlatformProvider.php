@@ -107,6 +107,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.archive')
                 ->route('bot.tasks',['status' => 'check']),
 
+            Menu::make(__('История транзакций'))
+                ->icon('bs.archive')
+                ->route('history'),
+
 //            Menu::make('Documentation')
 //                ->title('Docs')
 //                ->icon('bs.box-arrow-up-right')

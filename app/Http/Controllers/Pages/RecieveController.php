@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\History;
 use App\Models\Points;
 use App\Models\Tasks;
 use App\Models\User;
@@ -58,6 +59,13 @@ class RecieveController extends Controller
         $task->status = 'taken';
         $task->took_at = now();
         $task->save();
+
+        $history = History::create([
+            'user_id' => $user,
+            'type' => 'task',
+            'status' => 'taken',
+            'referance_id' => $task->id,
+        ]);
         return $data['id'];
     }
 }
