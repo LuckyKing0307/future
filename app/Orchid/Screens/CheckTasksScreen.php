@@ -29,7 +29,7 @@ class CheckTasksScreen extends Screen
         $photos = [];
         $photo = json_decode($task_data->photo,1);
         if (isset($photo['path'])){
-            $photos[] = storage_path('app/public/'.$photo['path']);
+            $photos[] = 'storage/'.$photo['path'];
         }
         return [
             'task' => Tasks::find($task),
