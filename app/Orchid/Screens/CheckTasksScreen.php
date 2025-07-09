@@ -92,9 +92,8 @@ class CheckTasksScreen extends Screen
         $task->status = 'end';
         $task->took_at = Carbon::now();
         $task->save();
-        $telegram = new Api();
         Points::create([
-            'user_id' => $task->person,
+            'user_id' => $task->user_id,
             'task_id' => $task->id,
             'points' => $task->points,
         ]);
