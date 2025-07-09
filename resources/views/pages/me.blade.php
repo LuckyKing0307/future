@@ -18,13 +18,13 @@
             <div class="mt-4 rounded-xl bg-indigo-200/70 p-3 text-indigo-900 space-y-0.5">
                 <p><span class="font-semibold">Balance:</span>$ {{$user->pointsFunction()}}</p>
                 <p><span class="font-semibold">Deposit:</span>$ {{$user->payments()}}</p>
-                <p class="text-xs text-gray-700 pt-1">Tasks: {{$user->tasks()->count()}}</p>
-                <p class="text-xs text-gray-700 pt-1">Days Left: {{$user->daysLeft()['days']}} days</p>
-
-                <!-- progress bar -->
-                <div class="h-1.5 w-full bg-indigo-300/60 mt-1 rounded">
-                    <div class="h-full bg-indigo-600 rounded-l" style="width:{{$user->daysLeft()['precentage']}}%"></div>
-                </div>
+                @if($user->tariff_at)
+                    <p class="text-xs text-gray-700 pt-1">Tasks: {{$user->tasks()->count()}}</p>
+                    <p class="text-xs text-gray-700 pt-1">Days Left: {{$user->daysLeft()['days']}} days</p>
+                    <div class="h-1.5 w-full bg-indigo-300/60 mt-1 rounded">
+                        <div class="h-full bg-indigo-600 rounded-l" style="width:{{$user->daysLeft()['precentage']}}%"></div>
+                    </div>
+                @endif
             </div>
         </div>
 
