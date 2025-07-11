@@ -90,7 +90,7 @@ class BotUsersScreen extends Screen
         Payments::create([
             'user_id'=>$user['id'],
             'status'=>'approved',
-            'type'=>'Admin',
+            'type'=>'payment',
             'tariff'=>null,
             'amount'=>$user['payment'],
         ]);

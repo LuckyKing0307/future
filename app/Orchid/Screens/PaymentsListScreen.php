@@ -74,6 +74,7 @@ class PaymentsListScreen extends Screen
             Payments::create([
                 'user_id'=>$user->is_referal,
                 'status'=>'approved',
+                'type'=>'payment',
                 'amount'=>intval($payment->amount)/10,
             ]);
         }

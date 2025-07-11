@@ -74,6 +74,7 @@ class User extends Authenticatable
     protected $allowedSorts = [
         'id',
         'name',
+        'surname',
         'email',
         'updated_at',
         'created_at',
@@ -82,6 +83,7 @@ class User extends Authenticatable
     public function pointsFunction()
     {
         $withdrawal = Withdrawal::where(['user_id' => $this->id])->where(['status' => 'approved'])->sum('amount');
+        $withdrawal = Payments::where(['user_id' => $this->id])->where(['status' => 'approved'])->where(['type' => 'payment'])->sum('amount');
         $points = Points::where(['user_id' => $this->id])->sum('points');
         return $points-$withdrawal;
     }

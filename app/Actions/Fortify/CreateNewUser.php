@@ -22,12 +22,15 @@ class CreateNewUser implements CreatesNewUsers
         $referrerId = session('is_referal') ?? null;
         Validator::make($input, [
             'phone'    => ['required', 'string', 'regex:/^\+998\d{9}$/', 'unique:users,phone'],
+            'name'    => ['required', 'string'],
+            'surname'    => ['required', 'string'],
             'password' => $this->passwordRules(),
         ])->validate();
 
         return User::create([
-            'name' => 'User',
             'phone' => $input['phone'],
+            'name' => $input['name'],
+            'surname' => $input['surname'],
             'password' => Hash::make($input['password']),
             'is_referal' => $referrerId,
         ]);

@@ -15,6 +15,8 @@
 
             <form method="POST" action="{{ route('register') }}" class="space-y-4 ">
                 @csrf
+                <label>Name<input type="text"  name="name" placeholder="Имя" required class="input w-full"></label>
+                <label>Surname<input type="text"  name="surname" placeholder="Фамилия" required class="input w-full"></label>
                 <label>Phone number<input type="text"  name="phone" placeholder="Номер телефона" required class="input w-full"></label>
                 <label>Password<input type="password" name="password" placeholder="Пароль" required class="input w-full"></label>
                 <label>Confirm password<input type="password" name="password_confirmation" placeholder="Повторите пароль" required class="input w-full"></label>
