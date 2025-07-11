@@ -32,6 +32,8 @@ class UsersList extends Table
     {
         return [
             TD::make('id', 'ID'),
+            TD::make('name', 'NAME'),
+            TD::make('surname', 'SURNAME'),
             TD::make('login', 'Логин')->render(function (User $user){
                 return "<a href='botuser/$user->id' style='text-decoration: underline;'>$user->phone</a>";
             }),
