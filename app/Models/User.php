@@ -84,9 +84,9 @@ class User extends Authenticatable
     public function pointsFunction()
     {
         $withdrawal = Withdrawal::where(['user_id' => $this->id])->where(['status' => 'approved'])->sum('amount');
-        $withdrawal = Payments::where(['user_id' => $this->id])->where(['status' => 'approved'])->where(['type' => 'payment'])->sum('amount');
+        $payments = Payments::where(['user_id' => $this->id])->where(['status' => 'approved'])->where(['type' => 'payment'])->sum('amount');
         $points = Points::where(['user_id' => $this->id])->sum('points');
-        return $points-$withdrawal;
+        return $points+$payments-$withdrawal;
     }
     public function daysLeft()
     {

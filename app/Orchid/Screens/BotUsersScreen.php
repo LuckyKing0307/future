@@ -92,7 +92,7 @@ class BotUsersScreen extends Screen
             'status'=>'approved',
             'type'=>'payment',
             'tariff'=>null,
-            'amount'=>$user['payment'],
+            'amount'=>$user['payment']*-1,
         ]);
     }
 

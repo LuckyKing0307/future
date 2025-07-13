@@ -10,7 +10,7 @@
             @csrf
             <label for="" style="color: #0e0d12;">
                 Сумма вывода(миниммум 50 USDT)
-                <input type="number" name="amount" min="50" max="{{$user->pointsFunction()}}" style="color: #0e0d12;">
+                <input type="number" name="amount" min="20" max="{{$user->tariff()->with_amount}}" style="color: #0e0d12;">
                 <br><br>
                 Реквизиты
                 <input type="text" name="recivers" required value="{{$user->recivers}}" style="color: #0e0d12;">

@@ -19,7 +19,7 @@
                             <img src="{{asset('images/tiktok.png')}}" alt="TikTok">
                             <span class="app-name">{{$task->name}}</span>
                         </div>
-                        <span class="price">${{$task->points}}</span>
+                        <span class="price">${{$user->tariff()->task_price}}</span>
                     </li>
                 @endforeach
             </ul>
@@ -38,7 +38,7 @@
                             <img src="{{asset('images/facebook.png')}}" alt="TikTok">
                             <span class="app-name">{{$task->name}}</span>
                         </div>
-                        <span class="price">${{$task->points}}</span>
+                        <span class="price">${{$user->tariff()->task_price}}</span>
                     </li>
                 @endforeach
             </ul>
@@ -55,7 +55,7 @@
                             <img src="{{asset('images/youtube.png')}}" alt="TikTok">
                             <span class="app-name">{{$task->name}}</span>
                         </div>
-                        <span class="price">${{$task->points}}</span>
+                        <span class="price">${{$user->tariff()->task_price}}</span>
                     </li>
                 @endforeach
             </ul>

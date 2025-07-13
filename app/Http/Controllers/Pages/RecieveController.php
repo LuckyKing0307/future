@@ -36,7 +36,7 @@ class RecieveController extends Controller
             $facebooks = $public->merge($tasks->get(1, collect()));
             $youtubes = $public->merge($tasks->get(2, collect()));
         }
-        return view('pages.recieve', compact('tiktoks', 'facebooks','took_qty', 'youtubes'));
+        return view('pages.recieve', compact('tiktoks', 'facebooks','took_qty', 'youtubes','user'));
     }
 
     public function withdrawal(Request $request)

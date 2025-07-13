@@ -37,6 +37,12 @@ class UsersList extends Table
             TD::make('login', 'Логин')->render(function (User $user){
                 return "<a href='botuser/$user->id' style='text-decoration: underline;'>$user->phone</a>";
             }),
+            TD::make('referals', 'Логин')->render(function (User $user){
+                return $user->refferals()->count();
+            }),
+            TD::make('amount', 'Логин')->render(function (User $user){
+                return $user->pointsFunction();
+            }),
             TD::make('Add Founds')->render(function (User $game){
                 return ModalToggle::make('Edit')
                     ->modal('editModal')

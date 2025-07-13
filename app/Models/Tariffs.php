@@ -15,6 +15,8 @@ class Tariffs extends Model
         'price',
         'usage',
         'payment',
+        'with_amount',
+        'task_price'
     ];
 
 

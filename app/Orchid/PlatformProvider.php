@@ -109,7 +109,7 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make(__('История транзакций'))
                 ->icon('bs.archive')
-                ->route('history'),
+                ->route('history_admin'),
 
 //            Menu::make('Documentation')
 //                ->title('Docs')

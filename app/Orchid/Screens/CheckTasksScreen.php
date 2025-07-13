@@ -92,10 +92,11 @@ class CheckTasksScreen extends Screen
         $task->status = 'end';
         $task->took_at = Carbon::now();
         $task->save();
+        $user = User::find($task->user_id);
         Points::create([
             'user_id' => $task->user_id,
             'task_id' => $task->id,
-            'points' => $task->points,
+            'points' => $user->tariff()->task_price,
         ]);
     }
 

@@ -101,6 +101,12 @@ class TariffsScreen extends Screen
             \Orchid\Screen\Fields\Input::make("$prefix.name")
                 ->title('Название')
                 ->required(),
+            \Orchid\Screen\Fields\Input::make("$prefix.task_price")
+                ->title('Цена за задание')
+                ->required(),
+            \Orchid\Screen\Fields\Input::make("$prefix.with_amount")
+                ->title('Возможный вывод')
+                ->required(),
 
             \Orchid\Screen\Fields\TextArea::make("$prefix.description")
                 ->title('Описание')

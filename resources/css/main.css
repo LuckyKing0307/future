@@ -167,12 +167,14 @@ input:focus{
     margin-top: 5px;
 }
 .member-card{
-    margin-top: 24px;
     width:var(--card-w);
     background:#fff;
     border-radius:var(--radius);
     box-shadow:0 4px 14px rgba(0,0,0,.15);
     padding:var(--gap) 22px 20px;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 24px;
 }
 
 .member-card h3{
