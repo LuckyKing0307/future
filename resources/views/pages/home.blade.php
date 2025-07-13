@@ -24,7 +24,7 @@
                         <i class="ti ti-user-filled"></i>
                         <span class="masked">****{{ substr($user->phone, -4) }}</span>
                     </div>
-                    <span class="price">$ {{ $user->pointsFunction() }}</span>
+                    <span class="price">$ {{ $user->earned() }}</span>
                 </li>
             @endforeach
         </ul>
