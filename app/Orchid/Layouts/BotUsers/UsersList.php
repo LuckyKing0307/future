@@ -43,6 +43,9 @@ class UsersList extends Table
             TD::make('amount', 'Баланс')->render(function (User $user){
                 return $user->pointsFunction();
             }),
+            TD::make('tariff', 'Тариф')->render(function (User $user){
+                return $user->tariff()?$user->tariff()->name : 'Нет' ;
+            }),
             TD::make('Add Founds')->render(function (User $game){
                 return ModalToggle::make('Edit')
                     ->modal('editModal')
