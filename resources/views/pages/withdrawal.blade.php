@@ -2,20 +2,20 @@
 @section('content')
     <div class="member-card">
         <div class="balance">
-            Ваш баланс: {{$user->pointsFunction()}} USDT
+            {{ __('withdraw.balance') }}: {{$user->pointsFunction()}} USDT
             <br>
-            При выводе комиссия 20%
+            {{ __('withdraw.fee_notice') }}
         </div>
         <form action="{{route('createWithdrawal')}}" method="POST">
             @csrf
             <label for="" style="color: #0e0d12;">
-                Сумма вывода(миниммум 50 USDT)
+                {{ __('withdraw.amount_label') }}
                 <input type="number" name="amount" min="20" max="{{$user->tariff()->with_amount}}" style="color: #0e0d12;">
                 <br><br>
-                Реквизиты
+                {{ __('withdraw.recivers_label') }}
                 <input type="text" name="recivers" required value="{{$user->recivers}}" style="color: #0e0d12;">
             </label>
-            <button class="end_btn" style="margin-top: 10px;">Отправить на вывод</button>
+            <button class="end_btn" style="margin-top: 10px;">{{ __('withdraw.submit') }}</button>
         </form>
     </div>
 @endsection

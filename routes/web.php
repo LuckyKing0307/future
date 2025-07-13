@@ -15,6 +15,17 @@ Route::middleware(['referral'])->group(function () {
             : view('auth.login');
     });
 });
+Route::get('lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'ru', 'uz'])) {
+        abort(400);
+    }
+
+    session(['locale' => $locale]);
+    app()->setLocale($locale);
+
+    return back(); // возвращает на предыдущую страницу
+})->name('lang.switch');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/recieve', [RecieveController::class, 'index'])->name('recieve');

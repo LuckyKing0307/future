@@ -1,31 +1,33 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="stats">
-    <div class="pricing-grid">
-        <div class="card">
-            <span class="title">Earned</span>
-            <span class="price">$ {{$user->earned()}}</span>
-        </div>
-        <div class="card">
-            <span class="title">Earned today</span>
-            <span class="price">$ {{$user->earnedToday()}}</span>
+    <div class="stats">
+        <div class="pricing-grid">
+            <div class="card">
+                <span class="title">{{ __('stats.earned') }}</span>
+                <span class="price">$ {{ $user->earned() }}</span>
+            </div>
+            <div class="card">
+                <span class="title">{{ __('stats.earned_today') }}</span>
+                <span class="price">$ {{ $user->earnedToday() }}</span>
+            </div>
         </div>
     </div>
-</div>
-<div class="member-card">
-    <h3>Member</h3>
 
-    <ul class="member-list">
-        @foreach($users as $user)
-            <li class="member-item">
-                <div class="item-info">
-                    <i class="ti ti-user-filled"></i>
-                    <span class="masked">****{{substr($user->phone, -4)}}</span>
-                </div>
-                <span class="price">$ {{$user->pointsFunction()}}</span>
-            </li>
-        @endforeach
-    </ul>
-</div>
+    <div class="member-card">
+        <h3>{{ __('stats.members') }}</h3>
+
+        <ul class="member-list">
+            @foreach($users as $user)
+                <li class="member-item">
+                    <div class="item-info">
+                        <i class="ti ti-user-filled"></i>
+                        <span class="masked">****{{ substr($user->phone, -4) }}</span>
+                    </div>
+                    <span class="price">$ {{ $user->pointsFunction() }}</span>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
 @endsection

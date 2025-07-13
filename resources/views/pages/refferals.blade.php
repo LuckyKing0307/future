@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="member-card">
-        <h3 class="mb-2">Пригласительная ссылка</h3>
+        <h3 class="mb-2">{{ __('invite.title') }}</h3>
 
         <div class="flex items-center gap-2 mb-6">
             <input id="crypto"
@@ -14,14 +14,14 @@
                     type="button"
                     class="end_btn">
                 <i class="ti ti-copy"></i>
-                Скопировать
+                {{ __('invite.copy') }}
             </button>
         </div>
 
-        <small id="copyMsg" style="display: none;">Скопировано в буфер обмена!</small>
+        <small id="copyMsg" style="display: none;">{{ __('invite.copied') }}</small>
 
         {{-- ==== Список рефералов ==== --}}
-        <h3 class="mt-8">Referrals</h3>
+        <h3 class="mt-8">{{ __('invite.referrals') }}</h3>
 
         <ul class="member-list">
             @foreach ($users as $user)

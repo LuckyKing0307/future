@@ -2,7 +2,7 @@
 @section('content')
     <div class="container mx-auto flex items-center justify-center px-4 py-16">
         <div class="glass-card w-full max-w-lg p-8 text-white">
-            <h1 class="text-center text-3xl font-bold mb-8">Оплатить криптовалютой</h1>
+            <h1 class="text-center text-3xl font-bold mb-8">{{ __('crypto.title') }}</h1>
 
             {{-- варианты валют --}}
             <div id="cryptoList" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -14,15 +14,17 @@
                     </div>
                 @endforeach
             </div>
-            Оплатить надо будет сюда
+
+            <label>{{ __('crypto.pay_to') }}</label>
             <input type="text" name="crypto" id="crypto" disabled>
+
             {{-- сумма --}}
             <input id="amount"
                    type="text" value="{{$tariff->id}}"
-                   placeholder="Введите сумму" hidden required>
+                   placeholder="{{ __('crypto.amount_placeholder') }}" hidden required>
 
             {{-- оформить платёж --}}
-            <button id="payBtn" disabled>Перейти к оплате</button>
+            <button id="payBtn" disabled>{{ __('crypto.pay_btn') }}</button>
         </div>
     </div>
     <script>

@@ -376,6 +376,13 @@ input:focus{
 .tariff a{
     color: #FFFFFF;
 }
+.burger a{
+    text-decoration: none !important;
+}
+.burger a img:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
 .crypto-option {
     @apply flex items-center gap-2 px-4 py-2 rounded-xl border
     transition hover:bg-gray-100 cursor-pointer select-none;
@@ -409,8 +416,10 @@ input:focus{
     border: 1px solid black !important;
 }
 .burger{
-    width: 50px;
+    width: 150px;
     height: 50px;
+    display: flex;
+    align-items: center;
 }
 .burger a{
     display: block !important;
