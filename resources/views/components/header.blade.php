@@ -14,7 +14,7 @@
             <img src="{{ asset('images/flags/uz.png') }}" alt="Uzbek" title="Uzbek" class="w-6 h-6">
         </a>
 
-        <a href="https://t.me/your_telegram_channel" target="_blank">
+        <a href="https://t.me/FutureMediaManager02" target="_blank">
             <img src="{{ asset('images/telegram.svg') }}" alt="Telegram" class="w-6 h-6">
         </a>
     </div>
