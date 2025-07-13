@@ -5,6 +5,7 @@ namespace App\Orchid\Layouts\BotUsers;
 use App\Models\BotRoles;
 use App\Models\BotUser;
 use App\Models\Payments as Payment;
+use App\Models\Tariffs;
 use App\Models\User;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
@@ -44,7 +45,9 @@ class UsersList extends Table
                 return $user->pointsFunction();
             }),
             TD::make('tariff', 'Тариф')->render(function (User $user){
-                return $user->tariff() ? $user->tariff()->name : '12';
+                $tariff = Tariffs::find($user->tariff_id);
+                return $tariff ? $tariff->name : '12';
+
             }),
             TD::make('Add Founds')->render(function (User $game){
                 return ModalToggle::make('Edit')
