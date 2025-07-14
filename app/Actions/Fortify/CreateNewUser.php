@@ -22,7 +22,7 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'phone'    => ['required', 'string', 'regex:/^\+998\d{9}$/', 'unique:users,phone'],
             'name'    => ['required', 'string'],
-            'referral'    => ['string'],
+            'referral'    => ['nullable', 'string'],
             'surname'    => ['required', 'string'],
             'password' => $this->passwordRules(),
         ])->validate();
