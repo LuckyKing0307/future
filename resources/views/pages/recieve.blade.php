@@ -17,9 +17,14 @@
                     <li class="promo-item task-id-{{$task->id}}" data-id="{{$task->id}}" data-description="{{$task->description}}">
                         <div class="left">
                             <img src="{{asset('images/tiktok.png')}}" alt="TikTok">
-                            <span class="app-name">{{$task->name}}</span>
+                            <span class="app-name">
+                                    <a href="{{ $task->name }}" class="sq-btn {{ $type[$task->importance] }}">
+                                        {{ strtoupper($type[$task->importance]) }}
+                                    </a>
+                            </span>
+
                         </div>
-                        <span class="price"></span>
+                        <span class="price">{{'$'.$user->tariff()?->task_price}}</span>
                     </li>
                 @endforeach
             </ul>
@@ -36,9 +41,13 @@
                     <li class="promo-item task-id-{{$task->id}}" data-id="{{$task->id}}" data-description="{{$task->description}}">
                         <div class="left">
                             <img src="{{asset('images/facebook.png')}}" alt="Facebook">
-                            <span class="app-name">{{$task->name}}</span>
+                            <span class="app-name">
+                                    <a href="{{ $task->name }}" class="sq-btn {{ $type[$task->importance] }}">
+                                        {{ strtoupper($type[$task->importance]) }}
+                                    </a>
+                            </span>
                         </div>
-                        <span class="price"></span>
+                        <span class="price">{{'$'.$user->tariff()?->task_price}}</span>
                     </li>
                 @endforeach
             </ul>
@@ -53,9 +62,13 @@
                     <li class="promo-item task-id-{{$task->id}}" data-id="{{$task->id}}" data-description="{{$task->description}}">
                         <div class="left">
                             <img src="{{asset('images/youtube.png')}}" alt="YouTube">
-                            <span class="app-name">{{$task->name}}</span>
+                            <span class="app-name">
+                                    <a href="{{ $task->name }}" class="sq-btn {{ $type[$task->importance] }}">
+                                        {{ strtoupper($type[$task->importance]) }}
+                                    </a>
+                            </span>
                         </div>
-                        <span class="price"></span>
+                        <span class="price">{{'$'.$user->tariff()?->task_price}}</span>
                     </li>
                 @endforeach
             </ul>
