@@ -54,19 +54,23 @@ class RecieveController extends Controller
     public function takeTask(Request $request)
     {
         $data = $request->all();
-        $user = Auth::id();
-        $task = Tasks::find($data['id']);
-        $task->user_id = $user;
-        $task->status = 'taken';
-        $task->took_at = now();
-        $task->save();
+        $user = Auth::user();
+        $took_qty = (($user->tariff()?->usage)-$user->todayTasks());
+        if ($took_qty>0){
 
-        $history = History::create([
-            'user_id' => $user,
-            'type' => 'task',
-            'status' => 'taken',
-            'referance_id' => $task->id,
-        ]);
+            $task = Tasks::find($data['id']);
+            $task->user_id = $user->id;
+            $task->status = 'taken';
+            $task->took_at = now();
+            $task->save();
+
+            $history = History::create([
+                'user_id' => $user->id,
+                'type' => 'task',
+                'status' => 'taken',
+                'referance_id' => $task->id,
+            ]);
+        }
         return $data['id'];
     }
 }
