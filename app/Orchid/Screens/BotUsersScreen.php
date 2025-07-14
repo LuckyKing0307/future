@@ -102,7 +102,12 @@ class BotUsersScreen extends Screen
     }
     public function block(User $user)
     {
-        $user->block = 1;
-        $user->save();
+        if($user->block){
+            $user->block = 0;
+            $user->save();
+        }else{
+            $user->block = 1;
+            $user->save();
+        }
     }
 }
