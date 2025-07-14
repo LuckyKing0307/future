@@ -38,7 +38,7 @@
                             <img src="{{asset('images/facebook.png')}}" alt="Facebook">
                             <span class="app-name">{{$task->name}}</span>
                         </div>
-                        <span class="price">${{$user->tariff()->task_price}}</span>
+                        <span class="price"></span>
                     </li>
                 @endforeach
             </ul>
