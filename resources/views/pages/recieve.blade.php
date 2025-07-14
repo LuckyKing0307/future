@@ -18,8 +18,8 @@
                         <div class="left">
                             <img src="{{asset('images/tiktok.png')}}" alt="TikTok">
                             <span class="app-name">
-                                    <a href="{{ $task->name }}" class="sq-btn {{ $type[$task->importance] }}">
-                                        {{ strtoupper($type[$task->importance]) }}
+                                    <a href="{{ $task->name }}" class="sq-btn tiktok">
+                                        {{ strtoupper('tiktok') }}
                                     </a>
                             </span>
 
@@ -42,8 +42,8 @@
                         <div class="left">
                             <img src="{{asset('images/facebook.png')}}" alt="Facebook">
                             <span class="app-name">
-                                    <a href="{{ $task->name }}" class="sq-btn {{ $type[$task->importance] }}">
-                                        {{ strtoupper($type[$task->importance]) }}
+                                    <a href="{{ $task->name }}" class="sq-btn facebook">
+                                        {{ strtoupper('facebook') }}
                                     </a>
                             </span>
                         </div>
@@ -63,8 +63,8 @@
                         <div class="left">
                             <img src="{{asset('images/youtube.png')}}" alt="YouTube">
                             <span class="app-name">
-                                    <a href="{{ $task->name }}" class="sq-btn {{ $type[$task->importance] }}">
-                                        {{ strtoupper($type[$task->importance]) }}
+                                    <a href="{{ $task->name }}" class="sq-btn youtube">
+                                        {{ strtoupper('youtube') }}
                                     </a>
                             </span>
                         </div>
