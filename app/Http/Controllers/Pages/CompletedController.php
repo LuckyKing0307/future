@@ -21,15 +21,15 @@ class CompletedController extends Controller
             1 => 'facebook',
             2 => 'youtube',
         ];
-        $user = Auth::id();
+        $user = Auth::user();
         $completed = Tasks::query()
-            ->where('user_id', $user)->where('status', 'end')
+            ->where('user_id', $user->id)->where('status', 'end')
             ->get();
 
         $inproccess = Tasks::query()
-            ->where('user_id', $user)->whereNot('status', 'end')
+            ->where('user_id', $user->id)->whereNot('status', 'end')
             ->get();
-        return view('pages.completed', compact('completed', 'inproccess', 'type'));
+        return view('pages.completed', compact('completed', 'inproccess', 'type','user'));
     }
 
     public function me()

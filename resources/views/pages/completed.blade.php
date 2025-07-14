@@ -21,7 +21,7 @@
                                     </a>
                                 </span>
                             </div>
-                            <span class="price">${{ $task->points }}</span>
+                            <span class="price">$${{$user->tariff()->task_price}}</span>
                         </div>
                         <br>
                         <span class="description">{{ $task->description }}</span>
@@ -48,7 +48,7 @@
                                     </a>
                                 </span>
                             </div>
-                            <span class="price">${{ $task->points }}</span>
+                            <span class="price">${{$user->tariff()->task_price}}</span>
                         </div>
                         <span class="description">{{ __('tasks.status') }}: {{ $task->status }}</span>
                         <br><br>
