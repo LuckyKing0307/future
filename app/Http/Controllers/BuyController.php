@@ -18,9 +18,9 @@ class BuyController extends Controller
     }
     public function show($id){
         $assets = [
-            ['id'=>'USDT-TRC20','label'=>'USDT TRC-20','icon'=>asset('images/usdt.png'),'wallet'=>'wallet'],
-            ['id'=>'BTC','label'=>'Bitcoin','icon'=>asset('images/bitcoin.png'),'wallet'=>'wallet'],
-            ['id'=>'ETH','label'=>'Ethereum','icon'=>asset('images/eth.png'),'wallet'=>'wallet'],
+            ['id'=>'USDT-TRC20','label'=>'USDT TRC-20','icon'=>asset('images/usdt.png'),'wallet'=>'TGPkLEF8xyqR3pBBsSfgy6Z1gF1drqE8R1'],
+            ['id'=>'BTC','label'=>'Bitcoin','icon'=>asset('images/bitcoin.png'),'wallet'=>'12zkC8B5nkkWqayTEF1VVWG81K9gx96xTD'],
+            ['id'=>'ETH','label'=>'Ethereum','icon'=>asset('images/eth.png'),'wallet'=>'0x1feedf8046da14e7af5323bbb23db43b5c25b28e'],
         ];
         $tariff = Tariffs::where('id', $id)->first();
         return view('pages.tariff', ['tariff' => $tariff, 'assets' => $assets]);
