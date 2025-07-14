@@ -44,6 +44,9 @@ class UsersList extends Table
             TD::make('amount', 'Баланс')->render(function (User $user){
                 return $user->pointsFunction();
             }),
+            TD::make('block', 'Заблокирован')->render(function (User $user){
+                return $user->block ? 'Заблокирован' : 'Активен';
+            }),
             TD::make('tariff', 'Тариф')->render(function (User $user){
                 return $user->tariff() ? $user->tariff()->name : 'Нету';
             }),
