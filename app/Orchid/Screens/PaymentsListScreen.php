@@ -43,7 +43,7 @@ class PaymentsListScreen extends Screen
                 TD::make('id',     'ID')->sort(),
                 TD::make('user.name', 'Пользователь')->render(function (Payment $p){
                     $user = User::find($p->user_id);
-                    return $user->phone;
+                    return $user?->phone;
                 }),
                 TD::make('type',   'Тип'),
                 TD::make('tariff', 'Тариф'),

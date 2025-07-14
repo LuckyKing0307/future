@@ -93,7 +93,9 @@ class WithdrawalScreen extends Screen
      * -----------------------------------------------------------------*/
     public function approve(int $id): void
     {
-        Withdrawal::findOrFail($id)->update(['status' => 'approved']);
+        $with = Withdrawal::findOrFail($id);
+        $with->update(['status' => 'approved']);
+
         Toast::info('Заявка подтверждена');
     }
 
