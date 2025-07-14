@@ -69,8 +69,13 @@ class UsersList extends Table
             TD::make('Заблокировать')
                 ->alignCenter()
                 ->render(function (User $user) {
-                    return Button::make('Клик')
-                        ->method('block', ['user' => $user->id]);
+                    if($user->block){
+                        return Button::make('Разблокировать')
+                            ->method('block', ['user' => $user->id]);
+                    }else{
+                        return Button::make('Заблокировать')
+                            ->method('block', ['user' => $user->id]);
+                    }
                 }),
         ];
     }
