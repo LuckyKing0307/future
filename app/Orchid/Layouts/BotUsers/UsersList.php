@@ -63,6 +63,12 @@ class UsersList extends Table
                         ->confirm('После удаления его уже не вернуть!!!')
                         ->method('delete', ['user' => $user->id]);
                 }),
+            TD::make('Заблокировать')
+                ->alignCenter()
+                ->render(function (User $user) {
+                    return Button::make('Клик')
+                        ->method('block', ['user' => $user->id]);
+                }),
         ];
     }
 }

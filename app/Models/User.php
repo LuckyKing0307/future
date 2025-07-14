@@ -79,6 +79,7 @@ class User extends Authenticatable
         'email',
         'updated_at',
         'created_at',
+        'block'
     ];
 
     public function pointsFunction()

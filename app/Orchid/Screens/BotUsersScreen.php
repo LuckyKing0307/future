@@ -100,4 +100,9 @@ class BotUsersScreen extends Screen
     {
         $user->delete();
     }
+    public function block(User $user)
+    {
+        $user->block = 1;
+        $user->save();
+    }
 }
