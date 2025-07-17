@@ -11,6 +11,14 @@
                 <span class="title">{{ __('stats.earned_today') }}</span>
                 <span class="price">$ {{ $user->earnedToday() }}</span>
             </div>
+            <div class="card">
+                <span class="title">{{ __('stats.bonus') }}</span>
+                <span class="price">$ {{ $user->earnedToday() }}</span>
+            </div>
+            <div class="card">
+                <span class="title">{{ __('stats.task_earn') }}</span>
+                <span class="price">$ {{ $user->earnedToday() }}</span>
+            </div>
         </div>
     </div>
 

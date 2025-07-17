@@ -40,7 +40,7 @@ class CompletedController extends Controller
             ['label' => __('profile.add_money'), 'badge' => null, 'href' => route('add_amount')],
             ['label' => __('profile.history'), 'badge' => null, 'href' => route('history')],
             ['label' => __('profile.team_size'), 'badge' => $user->refferals()->count(), 'href' => route('team')],
-            ['label' => __('profile.support'), 'badge' => null, 'href' => 'https://t.me/FutureMediaManager02'],
+            ['label' => __('profile.support'), 'badge' => null, 'href' => 'https://t.me/FutureM_Paul'],
             ['label' => __('profile.logout'), 'badge' => null, 'href' => route('data.logout')],
         ];
         return view('pages.me', ['items' => $items, 'user' => $user]);

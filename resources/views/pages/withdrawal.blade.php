@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <div class="member-card">
+    <div class="member-card" style="overflow: visible; height: auto;">
         <div class="balance">
             {{ __('withdraw.balance') }}: {{$user->pointsFunction()}} USDT
             <br>

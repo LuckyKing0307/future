@@ -61,6 +61,8 @@
     "stats.earned": "Earned",
     "stats.earned_today": "Earned today",
     "stats.members": "Members",
+    "stats.bonus": "Bonus",
+    "stats.task_earn": "Earned from tasks",
     "profile.balance": "Balance",
     "profile.deposit": "Deposit",
     "profile.tasks": "Tasks",

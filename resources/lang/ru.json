@@ -60,6 +60,8 @@
     "finance.empty": "Тут пока пусто",
     "stats.earned": "Заработано",
     "stats.earned_today": "Заработано сегодня",
+    "stats.bonus": "Бонус",
+    "stats.task_earn": "Общий доход за задачи",
     "stats.members": "Участники",
     "profile.balance": "Баланс",
     "profile.deposit": "Депозит",
