@@ -350,7 +350,23 @@ input:focus{
     width: 75px;
     font-family: sans-serif;
 }
+.social-banner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.banner-img {
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    object-fit: contain;
+}
 .lang-select-button {
     width: 100%;
     padding: 8px 10px;

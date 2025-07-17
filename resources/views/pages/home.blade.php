@@ -21,7 +21,9 @@
             </div>
         </div>
     </div>
-
+    <div class="social-banner">
+        <img src="{{asset('images/banner.png')}}" alt="Future-M Banner" class="banner-img">
+    </div>
     <div class="member-card">
         <h3>{{ __('stats.members') }}</h3>
 
