@@ -55,6 +55,7 @@
     "tasks.empty": "Hozircha bu yer bo'sh",
     "tasks.status": "Holati",
     "tasks.finish": "Yakunlash",
+    "tasks.cancel": "Olib Tashlash",
     "finance.withdraw_tab": "Pul yechish",
     "finance.send_tab": "Yuborish",
     "finance.empty": "Hozircha bu yer bo'sh",

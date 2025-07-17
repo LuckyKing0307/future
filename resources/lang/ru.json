@@ -55,6 +55,7 @@
     "tasks.empty": "Тут пока пусто",
     "tasks.status": "Статус",
     "tasks.finish": "Завершить",
+    "tasks.cancel": "Удалить",
     "finance.withdraw_tab": "Вывод",
     "finance.send_tab": "Отправка",
     "finance.empty": "Тут пока пусто",

@@ -32,6 +32,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/completed', [CompletedController::class, 'index'])->name('completed');
     Route::get('/me', [CompletedController::class, 'me'])->name('me');
     Route::post('/end', [CompletedController::class, 'end'])->name('end');
+    Route::post('/cancel', [CompletedController::class, 'cancel'])->name('cancel');
     Route::post('/task-take', [RecieveController::class, 'takeTask'])->name('take-task');
 
     Route::post('/withdrawal', [RecieveController::class, 'withdrawal'])->name('withdrawal.submit');

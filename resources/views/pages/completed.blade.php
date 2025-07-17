@@ -60,6 +60,11 @@
                             <input type="text" name="id" value="{{ $task->id }}" hidden>
                             <button class="end_btn">{{ __('tasks.finish') }}</button>
                         </form>
+                        <form action="{{ route('cancel') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="text" name="id" value="{{ $task->id }}" hidden>
+                            <button class="end_btn">{{ __('tasks.cancel') }}</button>
+                        </form>
                     </li>
                 @endforeach
             </ul>

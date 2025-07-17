@@ -27,6 +27,7 @@ class BuyController extends Controller
     }
     public function buy($asset,$id,$fixed=null){
         $user = Auth::id();
+        $check = Payments::where([['user_id','=',$user],['status','=','new']]);
         if ($fixed){
             $payment = Payments::create([
                 'user_id'=>$user,
@@ -35,14 +36,16 @@ class BuyController extends Controller
                 'amount'=>$id,
             ]);
         }else{
-            $tariff = Tariffs::find($id);
-            $payment = Payments::create([
-                'user_id'=>$user,
-                'status'=>'new',
-                'type'=>$asset,
-                'tariff'=>$id,
-                'amount'=>$tariff->price,
-            ]);
+            if(!$check->exists()){
+                $tariff = Tariffs::find($id);
+                $payment = Payments::create([
+                    'user_id'=>$user,
+                    'status'=>'new',
+                    'type'=>$asset,
+                    'tariff'=>$id,
+                    'amount'=>$tariff->price,
+                ]);
+            }
         }
         $history = History::create([
             'user_id' => $user,

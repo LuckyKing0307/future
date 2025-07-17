@@ -55,6 +55,7 @@
     "tasks.empty": "It's empty here for now",
     "tasks.status": "Status",
     "tasks.finish": "Finish",
+    "tasks.cancel": "Cancel",
     "finance.withdraw_tab": "Withdraw",
     "finance.send_tab": "Send",
     "finance.empty": "It's empty here for now",

@@ -72,4 +72,13 @@ class CompletedController extends Controller
         }
         return redirect()->route('completed');
     }
+
+    public function cancel(Request $request)
+    {
+        $data = $request->all();
+        $task = Tasks::find($data['id']);
+        $task->user_id = null;
+        $task->save();
+        return redirect()->route('completed');
+    }
 }
