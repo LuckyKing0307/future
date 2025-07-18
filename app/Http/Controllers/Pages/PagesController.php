@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use App\Models\History;
 use App\Models\Payments;
+use App\Models\Points;
 use App\Models\Tariffs;
 use App\Models\WaitRequest;
 use App\Models\Withdrawal;
@@ -46,8 +47,8 @@ class PagesController extends Controller
     public function history(){
         $send = Payments::where('user_id', Auth::id())->orderBy('created_at','desc')->get();
         $withdrawal = Withdrawal::where('user_id', Auth::id())->orderBy('created_at','desc')->get();
-
-        return view('pages.history', compact('send', 'withdrawal'));
+        $points = Points::where('user_id', Auth::id())->orderBy('created_at','desc')->get();
+        return view('pages.history', compact('send', 'withdrawal', 'points'));
     }
 
 
