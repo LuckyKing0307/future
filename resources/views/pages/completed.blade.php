@@ -22,7 +22,7 @@
                                     </a>
                                 </span>
                             </div>
-                            <span class="price">$${{$user->tariff()->task_price}}</span>
+                            <span class="price">${{$user->tariff()->task_price}}</span>
                         </div>
                         <br>
                         <span class="description">{{ $task->description }}</span>
