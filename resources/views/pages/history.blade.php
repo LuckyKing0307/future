@@ -38,6 +38,8 @@
                             <span class="app-name">$ {{ $task->amount }}</span>
                         </div>
                         <span class="price">{{ $task->created_at->format('d F - h:i:s') }}</span>
+                        <br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, ut.
                     </li>
                 @endforeach
             </ul>
@@ -56,24 +58,6 @@
                         </div>
                         <div class="left">
                             <span class="app-name">$ {{ $task->points }}</span>
-                        </div>
-                        <span class="price">{{ $task->created_at->format('d F - h:i:s') }}</span>
-                    </li>
-                @endforeach
-            </ul>
-        @else
-            <p style="color:#fff;text-align:center;opacity:.6">{{ __('finance.empty') }}</p>
-        @endif
-    </div>
-
-    <div class="tab-content" id="tab-send">
-        @if(count($send) > 0)
-            <ul class="promo-list">
-                @foreach($send as $task)
-                    <li class="promo-item task-id-{{ $task->id }}">
-                        <span class="app-name">{{ $task->status }}</span>
-                        <div class="left">
-                            <span class="app-name">$ {{ $task->amount }}</span>
                         </div>
                         <span class="price">{{ $task->created_at->format('d F - h:i:s') }}</span>
                     </li>

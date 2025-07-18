@@ -30,6 +30,10 @@ class EditRows extends Rows
                 ->title('Платеж')
                 ->placeholder('100')
                 ->required(),
+            Input::make('user.text')
+                ->title('Текст')
+                ->placeholder('Бонус от админа')
+                ->required(),
         ];
     }
 }

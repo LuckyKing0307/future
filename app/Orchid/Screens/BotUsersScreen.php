@@ -87,13 +87,15 @@ class BotUsersScreen extends Screen
     public function update(Request $request): void
     {
         $user = $request->toArray()['user'];
+        $text = $request->toArray()['text'];
         Payments::create([
             'user_id'=>$user['id'],
             'status'=>'approved',
             'type'=>'payment',
             'sub_type' =>'admin',
+            'text' =>$text,
             'tariff'=>null,
-            'amount'=>$user['payment']*-1,
+            'amount'=>$user['payment'],
         ]);
     }
 

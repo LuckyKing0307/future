@@ -15,6 +15,7 @@ class Payments extends Model
         'type',
         'tariff',
         'amount',
-        'sub_type'
+        'sub_type',
+        'text'
     ];
 }
