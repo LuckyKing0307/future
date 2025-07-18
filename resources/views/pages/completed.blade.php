@@ -8,7 +8,7 @@
     </div>
 
     <!-- Completed -->
-    <div class="tab-content active" id="tab-completed">
+    <div class="tab-content" id="tab-completed">
         @if(count($completed) > 0)
             <ul class="promo-list">
                 @foreach($completed as $task)
@@ -35,7 +35,7 @@
     </div>
 
     <!-- In-process -->
-    <div class="tab-content" id="tab-in-process">
+    <div class="tab-content active" id="tab-in-process">
         @if(count($inproccess) > 0)
             <ul class="promo-list">
                 @foreach($inproccess as $task)
