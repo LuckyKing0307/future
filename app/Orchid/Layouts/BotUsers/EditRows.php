@@ -33,7 +33,7 @@ class EditRows extends Rows
             Input::make('user.text')
                 ->title('Текст')
                 ->placeholder('Бонус от админа'),
-            Relation::make('user.tariff')
+            Relation::make('tariff')
                 ->fromModel(Tariffs::class, 'name', 'id')
                 ->title('Change tariff')
         ];

@@ -87,9 +87,9 @@ class BotUsersScreen extends Screen
     public function update(Request $request): void
     {
         $user = $request->toArray()['user'];
-        if ($user['tariff']){
+        if ($request->toArray()['tariff']){
            $user_data = User::find($user['id']);
-           $user_data->tariff_id = $user['tariff'];
+           $user_data->tariff_id = $request->toArray()['tariff'];
         }
         if($user['payment']){
 
