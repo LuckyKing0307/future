@@ -3,6 +3,7 @@
 namespace App\Orchid\Layouts\BotUsers;
 
 use App\Models\BotRoles;
+use App\Models\Tariffs;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
@@ -28,12 +29,13 @@ class EditRows extends Rows
             Input::make('user.id')->hidden(),
             Input::make('user.payment')
                 ->title('Платеж')
-                ->placeholder('100')
-                ->required(),
+                ->placeholder('100'),
             Input::make('user.text')
                 ->title('Текст')
-                ->placeholder('Бонус от админа')
-                ->required(),
+                ->placeholder('Бонус от админа'),
+            Relation::make('user.tariff')
+                ->fromModel(Tariffs::class, 'id')
+                ->title('Change tariff')
         ];
     }
 }

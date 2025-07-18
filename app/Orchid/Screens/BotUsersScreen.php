@@ -87,16 +87,22 @@ class BotUsersScreen extends Screen
     public function update(Request $request): void
     {
         $user = $request->toArray()['user'];
-        $text = $request->toArray()['text'];
-        Payments::create([
-            'user_id'=>$user['id'],
-            'status'=>'approved',
-            'type'=>'payment',
-            'sub_type' =>'admin',
-            'text' =>$text,
-            'tariff'=>null,
-            'amount'=>$user['payment'],
-        ]);
+        if ($user['tariff']){
+           $user_data = User::find($user['id']);
+           $user_data->tariff_id = $user['tariff'];
+        }
+        if($user['payment']){
+
+            Payments::create([
+                'user_id'=>$user['id'],
+                'status'=>'approved',
+                'type'=>'payment',
+                'sub_type' =>'admin',
+                'text' =>$user['text']!=null ? $user['text'] : '',
+                'tariff'=>null,
+                'amount'=>$user['payment'],
+            ]);
+        }
     }
 
     public function delete(User $user)
