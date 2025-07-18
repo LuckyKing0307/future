@@ -111,7 +111,7 @@ class User extends Authenticatable
 
     public function referalPaymnts()
     {
-        $points = Payments::where(['user_id' => $this->id])->where(['sub_type' => 'referal'])->sum('points');
+        $points = Payments::where(['user_id' => $this->id])->where(['sub_type' => 'referal'])->sum('amount');
         return $points;
     }
 
