@@ -57,7 +57,7 @@
                         <div class="left">
                             <span class="app-name">$ {{ $task->points }}</span>
                         </div>
-                        <span class="price">{{ $task->task->took_at->format('d F - h:i:s') }}</span>
+                        <span class="price">{{ $task->created_at->format('d F - h:i:s') }}</span>
                     </li>
                 @endforeach
             </ul>
