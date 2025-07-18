@@ -42,7 +42,6 @@
         item.addEventListener('click', function(e) {
             e.preventDefault();
             selectedFlag.src = this.getAttribute('data-flag');
-            selectedLabel.textContent = this.getAttribute('data-label');
             dropdown.style.display = 'none';
             window.location.href = this.href;
         });
