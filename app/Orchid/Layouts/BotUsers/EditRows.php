@@ -34,7 +34,7 @@ class EditRows extends Rows
                 ->title('Текст')
                 ->placeholder('Бонус от админа'),
             Relation::make('user.tariff')
-                ->fromModel(Tariffs::class, 'id')
+                ->fromModel(Tariffs::class, 'name', 'id')
                 ->title('Change tariff')
         ];
     }
