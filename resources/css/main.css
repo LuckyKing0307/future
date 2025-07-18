@@ -100,7 +100,6 @@ form,label{
     font-size: 16px;
     line-height: 100%;
     margin-top: 24px;
-    color: #FFFFFF;
 }
 input {
     border: 1px solid #979797;
@@ -292,6 +291,12 @@ input:focus{
 }
 .description{
     margin-top: 10px !important;
+    font-size: 18px;
+    font-weight: 600;
+}
+.desc_status{
+    font-size: 22px;
+    font-weight: 800;
 }
 .left{
     display:flex;

@@ -52,7 +52,7 @@
                             </div>
                             <span class="price">${{$user->tariff()->task_price}}</span>
                         </div>
-                        <span class="description">{{ __('tasks.status') }}: {{ $task->status }}</span>
+                        <span class="description desc_status">{{ __('tasks.status') }}: {{ $task->status }}</span>
                         <br><br>
                         <span class="description">{{ $task->description }}</span>
                         <br><br>
@@ -92,7 +92,7 @@
                                 </div>
                                 <span class="price">${{$user->tariff()->task_price}}</span>
                             </div>
-                            <span class="description">{{ __('tasks.status') }}: {{ $task->status }}</span>
+                            <span class="description desc_status">{{ __('tasks.status') }}: {{ $task->status }}</span>
                             <br><br>
                             <span class="description">{{ $task->description }}</span>
                             <br><br>
