@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('payments', function (Blueprint $table) {
             $table->string('sub_type')->nullable();
+            $table->string('text')->nullable();
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('payments', function (Blueprint $table) {
             $table->dropColumn('sub_type');
+            $table->dropColumn('text');
         });
     }
 };
