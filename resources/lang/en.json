@@ -52,6 +52,7 @@
     "tariff.buy": "Buy",
     "tasks.completed_tab": "Completed",
     "tasks.in_process_tab": "In-process",
+    "tasks.check": "Task in Check",
     "tasks.empty": "It's empty here for now",
     "tasks.status": "Status",
     "tasks.finish": "Finish",

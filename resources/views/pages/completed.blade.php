@@ -4,6 +4,7 @@
     <div class="tab-bar">
         <button class="tab active" data-target="tab-completed">{{ __('tasks.completed_tab') }}</button>
         <button class="tab" data-target="tab-in-process">{{ __('tasks.in_process_tab') }}</button>
+        <button class="tab" data-target="tab-check">{{ __('tasks.in_process_tab') }}</button>
     </div>
 
     <!-- Completed -->
@@ -38,6 +39,7 @@
         @if(count($inproccess) > 0)
             <ul class="promo-list">
                 @foreach($inproccess as $task)
+                    @if($task->status!='check')
                     <li class="promo-item-text task-id-{{ $task->id }}" data-id="{{ $task->id }}" data-description="{{ $task->description }}">
                         <div class="promo-item-data">
                             <div class="left">
@@ -66,6 +68,47 @@
                             <button class="end_btn">{{ __('tasks.cancel') }}</button>
                         </form>
                     </li>
+                    @endif
+                @endforeach
+            </ul>
+        @else
+            <p style="color:#fff;text-align:center;opacity:.6">{{ __('tasks.empty') }}</p>
+        @endif
+    </div>
+    <div class="tab-content" id="tab-check">
+        @if(count($inproccess) > 0)
+            <ul class="promo-list">
+                @foreach($inproccess as $task)
+                    @if($task->status=='check')
+                        <li class="promo-item-text task-id-{{ $task->id }}" data-id="{{ $task->id }}" data-description="{{ $task->description }}">
+                            <div class="promo-item-data">
+                                <div class="left">
+                                    <img src="{{ asset('images/'.$type[$task->importance].'.png') }}" alt="{{ $type[$task->importance] }}">
+                                    <span class="app-name">
+                                    <a href="{{ $task->name }}" class="sq-btn {{ $type[$task->importance] }}">
+                                        {{ strtoupper($type[$task->importance]) }}
+                                    </a>
+                                </span>
+                                </div>
+                                <span class="price">${{$user->tariff()->task_price}}</span>
+                            </div>
+                            <span class="description">{{ __('tasks.status') }}: {{ $task->status }}</span>
+                            <br><br>
+                            <span class="description">{{ $task->description }}</span>
+                            <br><br>
+                            <form action="{{ route('end') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="photo" class="filepond" required>
+                                <input type="text" name="id" value="{{ $task->id }}" hidden>
+                                <button class="end_btn">{{ __('tasks.finish') }}</button>
+                            </form>
+                            <form action="{{ route('cancel') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="text" name="id" value="{{ $task->id }}" hidden>
+                                <button class="end_btn">{{ __('tasks.cancel') }}</button>
+                            </form>
+                        </li>
+                    @endif
                 @endforeach
             </ul>
         @else
