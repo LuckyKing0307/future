@@ -38,8 +38,7 @@
                             <span class="app-name">$ {{ $task->amount }}</span>
                         </div>
                         <span class="price">{{ $task->created_at->format('d F - h:i:s') }}</span>
-                        <br>
-                        {{$task->text}}
+                        <span class="price">{{$task->text}}</span>
                     </li>
                 @endforeach
             </ul>
