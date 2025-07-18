@@ -52,7 +52,7 @@
                 @foreach($points as $task)
                     <li class="promo-item task-id-{{ $task->id }}">
                         <div class="">
-                            <span class="app-name">{{ $task->task()->status }}</span>
+                            <span class="app-name">{{ $task->task->status }}</span>
                         </div>
                         <div class="left">
                             <span class="app-name">$ {{ $task->points }}</span>
