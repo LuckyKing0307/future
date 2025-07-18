@@ -59,10 +59,7 @@ class CheckTasksScreen extends Screen
         if ($this->task->status=='check'){
             return [
                 Button::make('Подтвердить')->method('checked'),
-                ModalToggle::make('Комментарий')
-                    ->modal('sendMessage')
-                    ->method('sendMessage')
-                    ->icon('plus')
+                Button::make('Отменить')->method('cancel'),
             ];
         }
         return [
@@ -100,20 +97,10 @@ class CheckTasksScreen extends Screen
         ]);
     }
 
-    public function sendMessage(Request $request)
+    public function cancel()
     {
         $task = $this->task;
         $task->status = 'taken';
-        $task->deadline = $request->all()['task']['deadline'];
-        $task->points = $request->all()['task']['points'];
         $task->save();
-        $telegram = new Api();
-        $user = BotUser::find($task->person);
-        if ($user->telegram_id){
-            $telegram->sendMessage([
-                'chat_id' => $user->telegram_id,
-                'text' => "Задача обновлена с комментарием: ".$request->all()['message'],
-            ]);
-        }
     }
 }
