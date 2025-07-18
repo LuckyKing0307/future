@@ -9,8 +9,8 @@
         <form action="{{route('createWithdrawal')}}" method="POST">
             @csrf
             <label for="" style="color: #0e0d12;">
-                {{ __('withdraw.amount_label') }}
-                <input type="number" name="amount" min="20" max="{{$user->tariff() ? $user->tariff()->with_amount : 0}}" style="color: #0e0d12;">
+                {{ __('withdraw.amount_label') }}  {{$user->tariff() ? $user->tariff()->with_amount : 0}} USDT
+                <input type="number" name="amount" min="{{$user->tariff() ? $user->tariff()->with_amount : 0}}" max="{{$user->pointsFunction()}}" style="color: #0e0d12;">
                 <br><br>
                 {{ __('withdraw.recivers_label') }}
                 <input type="text" name="recivers" required value="{{$user->recivers}}" style="color: #0e0d12;">

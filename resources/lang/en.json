@@ -92,7 +92,7 @@
     "crypto.pay_btn": "Proceed to payment",
     "withdraw.balance": "Your balance",
     "withdraw.fee_notice": "20% withdrawal fee applies",
-    "withdraw.amount_label": "Withdrawal amount (minimum 50 USDT)",
+    "withdraw.amount_label": "Withdrawal amount minimum:",
     "withdraw.recivers_label": "Recipient details",
     "withdraw.submit": "Send withdrawal request",
     "profile.withdrawal": "Withdrawal",

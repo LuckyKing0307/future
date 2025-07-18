@@ -92,7 +92,7 @@
     "crypto.pay_btn": "To'lovga o'tish",
     "withdraw.balance": "Sizning balansingiz",
     "withdraw.fee_notice": "Pul yechishda 20% komissiya olinadi",
-    "withdraw.amount_label": "Yechiladigan summa (minimum 50 USDT)",
+    "withdraw.amount_label": "Yechiladigan summa minimum: ",
     "withdraw.recivers_label": "Qabul qiluvchi rekvizitlari",
     "withdraw.submit": "So'rov yuborish",
     "profile.withdrawal": "Pul yechish",

@@ -92,7 +92,7 @@
     "crypto.pay_btn": "Перейти к оплате",
     "withdraw.balance": "Ваш баланс",
     "withdraw.fee_notice": "При выводе комиссия 20%",
-    "withdraw.amount_label": "Сумма вывода (минимум 50 USDT)",
+    "withdraw.amount_label": "Сумма вывода минимум:",
     "withdraw.recivers_label": "Реквизиты",
     "withdraw.submit": "Отправить на вывод",
     "profile.withdrawal": "Вывод средств",
