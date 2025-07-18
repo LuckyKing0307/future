@@ -2,9 +2,9 @@
 @section('content')
     <!-- табы -->
     <div class="tab-bar">
-        <button class="tab active" data-target="tab-completed">{{ __('tasks.completed_tab') }}</button>
         <button class="tab" data-target="tab-in-process">{{ __('tasks.in_process_tab') }}</button>
-        <button class="tab" data-target="tab-check">{{ __('tasks.in_process_tab') }}</button>
+        <button class="tab" data-target="tab-check">{{ __('tasks.check') }}</button>
+        <button class="tab active" data-target="tab-completed">{{ __('tasks.completed_tab') }}</button>
     </div>
 
     <!-- Completed -->
