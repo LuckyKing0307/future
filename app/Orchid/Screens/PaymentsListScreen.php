@@ -75,6 +75,7 @@ class PaymentsListScreen extends Screen
                 'user_id'=>$user->is_referal,
                 'status'=>'approved',
                 'type'=>'payment',
+                'sub_type' =>'referal',
                 'amount'=>intval($payment->amount)/10,
             ]);
         }

@@ -33,6 +33,7 @@ class BuyController extends Controller
                 'user_id'=>$user,
                 'status'=>'new',
                 'type'=>$asset,
+                'sub_type' =>'payment',
                 'amount'=>$id,
             ]);
         }else{
@@ -42,6 +43,7 @@ class BuyController extends Controller
                     'user_id'=>$user,
                     'status'=>'new',
                     'type'=>$asset,
+                    'sub_type' =>'payment',
                     'tariff'=>$id,
                     'amount'=>$tariff->price,
                 ]);

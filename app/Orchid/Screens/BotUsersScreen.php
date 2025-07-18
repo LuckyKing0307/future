@@ -91,6 +91,7 @@ class BotUsersScreen extends Screen
             'user_id'=>$user['id'],
             'status'=>'approved',
             'type'=>'payment',
+            'sub_type' =>'admin',
             'tariff'=>null,
             'amount'=>$user['payment']*-1,
         ]);

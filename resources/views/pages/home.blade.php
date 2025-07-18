@@ -13,11 +13,11 @@
             </div>
             <div class="card">
                 <span class="title">{{ __('stats.bonus') }}</span>
-                <span class="price">$ {{ $user->earnedToday() }}</span>
+                <span class="price">$ {{ $user->referalPaymnts() }}</span>
             </div>
             <div class="card">
                 <span class="title">{{ __('stats.task_earn') }}</span>
-                <span class="price">$ {{ $user->earnedToday() }}</span>
+                <span class="price">$ {{ $user->earned() }}</span>
             </div>
         </div>
     </div>
@@ -29,13 +29,15 @@
 
         <ul class="member-list">
             @foreach($users as $user)
-                <li class="member-item">
-                    <div class="item-info">
-                        <i class="ti ti-user-filled"></i>
-                        <span class="masked">****{{ substr($user->phone, -4) }}</span>
-                    </div>
-                    <span class="price">$ {{ $user->earned() }}</span>
-                </li>
+                @if($user->earned() != 0)
+                    <li class="member-item">
+                        <div class="item-info">
+                            <i class="ti ti-user-filled"></i>
+                            <span class="masked">****{{ substr($user->phone, -4) }}</span>
+                        </div>
+                        <span class="price">$ {{ $user->earned() }}</span>
+                    </li>
+                @endif
             @endforeach
         </ul>
     </div>

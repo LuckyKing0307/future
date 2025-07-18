@@ -87,22 +87,31 @@ class User extends Authenticatable
         $withdrawal = Withdrawal::where(['user_id' => $this->id])->where(['status' => 'approved'])->sum('amount');
         $payments = Payments::where(['user_id' => $this->id])->where(['status' => 'approved'])->where(['type' => 'payment'])->sum('amount');
         $points = Points::where(['user_id' => $this->id])->sum('points');
-        return $points+$payments-$withdrawal;
+        return $points + $payments - $withdrawal;
     }
+
     public function daysLeft()
     {
         $daysLeft = Carbon::parse($this->tariff_at)
-        ->addYear()
-        ->diffInDays(now(), false);
-        $per = (round($daysLeft)*-1)/365*100;
+            ->addYear()
+            ->diffInDays(now(), false);
+        $per = (round($daysLeft) * -1) / 365 * 100;
         return [
-            'days' => round($daysLeft)*-1,
+            'days' => round($daysLeft) * -1,
             'precentage' => $per,
         ];
     }
+
     public function earned()
     {
+
         $points = Points::where(['user_id' => $this->id])->sum('points');
+        return $points;
+    }
+
+    public function referalPaymnts()
+    {
+        $points = Payments::where(['user_id' => $this->id])->where(['sub_type' => 'referal'])->sum('points');
         return $points;
     }
 
