@@ -39,7 +39,7 @@
                         </div>
                         <span class="price">{{ $task->created_at->format('d F - h:i:s') }}</span>
                         <br>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, ut.
+                        {{$task->text}}
                     </li>
                 @endforeach
             </ul>
