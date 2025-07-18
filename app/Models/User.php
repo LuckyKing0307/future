@@ -139,7 +139,8 @@ class User extends Authenticatable
     {
         $total = DB::table('payments')
             ->join('tariffs', 'payments.tariff', '=', 'tariffs.id')
-            ->where('payments.user_id', $this->id)      // убери строку, если нужна сумма по всем
+            ->where('payments.user_id', $this->id)
+            ->where('payments.status','approved')// убери строку, если нужна сумма по всем
             ->sum('tariffs.price');
         return $total;
     }
