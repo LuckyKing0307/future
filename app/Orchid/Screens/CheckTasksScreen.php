@@ -56,17 +56,9 @@ class CheckTasksScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        if ($this->task->status=='check'){
-            return [
-                Button::make('Подтвердить')->method('checked'),
-                Button::make('Отменить')->method('cancel'),
-            ];
-        }
         return [
-            ModalToggle::make('Комментарий')
-            ->modal('sendMessage')
-            ->method('sendMessage')
-            ->icon('plus')
+            Button::make('Подтвердить')->method('checked'),
+            Button::make('Отменить')->method('cancel'),
         ];
     }
 
