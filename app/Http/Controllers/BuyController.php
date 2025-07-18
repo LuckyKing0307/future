@@ -49,12 +49,6 @@ class BuyController extends Controller
                 ]);
             }
         }
-        $history = History::create([
-            'user_id' => $user,
-            'type' => 'payment',
-            'status' => 'new',
-            'referance_id' => $payment->id,
-        ]);
         return redirect()->route('tariffs');
     }
 }
