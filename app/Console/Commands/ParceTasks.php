@@ -30,13 +30,15 @@ class ParceTasks extends Command
     {
         $tasks = Tasks::all();
         foreach ($tasks as $task) {
-            UserTask::create([
-                'type' => $task->type ?? 'none',
-                'status' => $task->status,
-                'task_id' => $task->id,
-                'took_at' => $task->took_at,
-                'user_id' => $task->user_id,
-            ]);
+            if($task->user_id){
+                UserTask::create([
+                    'type' => $task->type ?? 'none',
+                    'status' => $task->status,
+                    'task_id' => $task->id,
+                    'took_at' => $task->took_at,
+                    'user_id' => $task->user_id,
+                ]);
+            }
         }
     }
 }
