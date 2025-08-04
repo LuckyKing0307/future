@@ -150,7 +150,6 @@ class User extends Authenticatable
         return Tariffs::find($this->tariff_id);
     }
 
-
     public function todayTasks()
     {
         $todayStart = Carbon::today();        // 00:00:00

@@ -7,6 +7,7 @@ use App\Models\History;
 use App\Models\Payments;
 use App\Models\Points;
 use App\Models\Tariffs;
+use App\Models\User;
 use App\Models\WaitRequest;
 use App\Models\Withdrawal;
 use Illuminate\Http\Request;
@@ -63,8 +64,27 @@ class PagesController extends Controller
     public function team(){
         $invite = url('/?ref=' . Auth::id());
         $user = Auth::user();
-        $users = $user->refferals();
+        $users = $this->buildReferralTree($user,1);
         return view('pages/refferals', compact('users', 'invite'));
+    }
+
+
+    public function buildReferralTree(User $user, $isRoot = false)
+    {
+        $node = [
+            'text' => [
+                'name' => $user->name ?? 'Пользователь ' . $user->id,
+                'title' => $isRoot ? 'Вы' : 'Реферал',
+            ],
+            'HTMLclass' => $isRoot ? 'test' : 'ref-node',
+            'children' => [],
+        ];
+
+        foreach ($user->refferals() as $child) {
+            $node['children'][] = $this->buildReferralTree($child);
+        }
+
+        return $node;
     }
     public function logout(){
         Auth::logout();
