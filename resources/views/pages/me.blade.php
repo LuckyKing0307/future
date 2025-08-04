@@ -13,7 +13,7 @@
             <div class="mt-4 rounded-xl bg-indigo-200/70 p-3 text-indigo-900 space-y-0.5">
                 <p><span class="font-semibold">{{ __('profile.balance') }}:</span> $ {{ $user->pointsFunction() }}</p>
                 <p><span class="font-semibold">{{ __('profile.deposit') }}:</span> $ {{ $user->payments() }}</p>
-                <p><span class="font-semibold">{{ __('profile.ball') }}</span>{{ $user->ball }}</p>
+                <p><span class="font-semibold">{{ __('profile.ball') }}:</span> {{ $user->ball }}</p>
                 @if($user->tariff_at)
                     <p class="text-xs text-gray-700 pt-1">{{ __('profile.tasks') }}: {{ $user->tasks()->count() }}</p>
                     <p class="text-xs text-gray-700 pt-1">{{ __('profile.days_left') }}: {{ $user->daysLeft()['days'] }} {{ __('profile.days') }}</p>
