@@ -2,29 +2,23 @@
 
 namespace App\Models;
 
-use App\Orchid\Filters\Tasks\TasksFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Orchid\Filters\Filterable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Orchid\Screen\AsSource;
 
-class Tasks extends Model
+class UserTask extends Model
 {
-    use HasFactory, AsSource, Filterable;
+    use HasFactory, AsSource;
 
     protected $fillable = [
-        'name',
-        'description',
-        'importance',
         'status',
-        'points',
-        'group',
-        'person',
-        'deadline',
+        'task_id',
         'photo',
         'took_at',
         'user_id',
         'did_at',
+        'type'
     ];
 
 
@@ -38,9 +32,9 @@ class Tasks extends Model
         'exit' => 'Не сделанные',
         'latereq' => 'Запрос на дополнительное время',
     ];
-    public function userTask()
-    {
-        return $this->hasOne(UserTask::class,'task_id','id');
-    }
 
+    public function task(): BelongsTo
+    {
+        return $this->belongsTo(Tasks::class,'task_id');
+    }
 }

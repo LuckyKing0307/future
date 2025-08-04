@@ -4,6 +4,7 @@ namespace App\Orchid\Screens;
 
 use App\Models\BotUser;
 use App\Models\Tasks;
+use App\Models\UserTask;
 use App\Orchid\Filters\Tasks\TasksFilter;
 use App\Orchid\Layouts\Tasks\CreateRows;
 use App\Orchid\Layouts\Tasks\EditRows;
@@ -30,7 +31,9 @@ class TasksScreen extends Screen
     {
         if (isset($status)){
             return [
-                'tasks' => Tasks::filtersApply([TasksFilter::class])->where(['type' => null])->where(['status' => $status])->orderBy('created_at', 'desc')->paginate(10),
+                'tasks' => Tasks::whereHas('userTask', function ($query) use ($status) {
+                    $query->where('status', $status);
+                })->orderBy('created_at', 'desc')->paginate(10),
             ];
         }
         return [

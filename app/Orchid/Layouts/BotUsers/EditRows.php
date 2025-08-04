@@ -27,6 +27,9 @@ class EditRows extends Rows
     {
         return [
             Input::make('user.id')->hidden(),
+            Input::make('user.ball')
+                ->title('Бальная система')
+                ->placeholder('10'),
             Input::make('user.payment')
                 ->title('Платеж')
                 ->placeholder('100'),

@@ -70,15 +70,15 @@ class PaymentsListScreen extends Screen
             $user->tariff_id = $payment->tariff;
             $user->save();
         }
-        if ($user->is_referal){
-            Payments::create([
-                'user_id'=>$user->is_referal,
-                'status'=>'approved',
-                'type'=>'payment',
-                'sub_type' =>'referal',
-                'amount'=>intval($payment->amount)/10,
-            ]);
-        }
+//        if ($user->is_referal){
+//            Payments::create([
+//                'user_id'=>$user->is_referal,
+//                'status'=>'approved',
+//                'type'=>'payment',
+//                'sub_type' =>'referal',
+//                'amount'=>intval($payment->amount)/10,
+//            ]);
+//        }
         Toast::success("Платёж #{$payment->id} одобрен");
     }
 

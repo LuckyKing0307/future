@@ -15,17 +15,17 @@
                     <li class="promo-item-text task-id-{{ $task->id }}" data-id="{{ $task->id }}" data-description="{{ $task->description }}">
                         <div class="promo-item-data">
                             <div class="left">
-                                <img src="{{ asset('images/'.$type[$task->importance].'.png') }}" alt="{{ $type[$task->importance] }}">
+                                <img src="{{ asset('images/'.$type[$task->task->importance].'.png') }}" alt="{{ $type[$task->task->importance] }}">
                                 <span class="app-name">
-                                    <a href="{{ $task->name }}" class="sq-btn {{ $type[$task->importance] }}">
-                                        {{ strtoupper($type[$task->importance]) }}
+                                    <a href="{{ $task->task->name }}" class="sq-btn {{ $type[$task->task->importance] }}">
+                                        {{ strtoupper($type[$task->task->importance]) }}
                                     </a>
                                 </span>
                             </div>
                             <span class="price">${{$user->tariff()->task_price}}</span>
                         </div>
                         <br>
-                        <span class="description">{{ $task->description }}</span>
+                        <span class="description">{{ $task->task->description }}</span>
                     </li>
                 @endforeach
             </ul>
@@ -40,13 +40,13 @@
             <ul class="promo-list">
                 @foreach($inproccess as $task)
                     @if($task->status!='check')
-                    <li class="promo-item-text task-id-{{ $task->id }}" data-id="{{ $task->id }}" data-description="{{ $task->description }}">
+                    <li class="promo-item-text task-id-{{ $task->id }}" data-id="{{ $task->id }}" data-description="{{ $task->task->description }}">
                         <div class="promo-item-data">
                             <div class="left">
-                                <img src="{{ asset('images/'.$type[$task->importance].'.png') }}" alt="{{ $type[$task->importance] }}">
+                                <img src="{{ asset('images/'.$type[$task->task->importance].'.png') }}" alt="{{ $type[$task->task->importance] }}">
                                 <span class="app-name">
-                                    <a href="{{ $task->name }}" class="sq-btn {{ $type[$task->importance] }}">
-                                        {{ strtoupper($type[$task->importance]) }}
+                                    <a href="{{ $task->task->name }}" class="sq-btn {{ $type[$task->task->importance] }}">
+                                        {{ strtoupper($type[$task->task->importance]) }}
                                     </a>
                                 </span>
                             </div>
@@ -54,7 +54,7 @@
                         </div>
                         <span class="description desc_status">{{ __('tasks.status') }}: {{ $task->status }}</span>
                         <br><br>
-                        <span class="description">{{ $task->description }}</span>
+                        <span class="description">{{ $task->task->description }}</span>
                         <br><br>
                         <form action="{{ route('end') }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -80,13 +80,13 @@
             <ul class="promo-list">
                 @foreach($inproccess as $task)
                     @if($task->status=='check')
-                        <li class="promo-item-text task-id-{{ $task->id }}" data-id="{{ $task->id }}" data-description="{{ $task->description }}">
+                        <li class="promo-item-text task-id-{{ $task->id }}" data-id="{{ $task->id }}" data-description="{{ $task->task->description }}">
                             <div class="promo-item-data">
                                 <div class="left">
-                                    <img src="{{ asset('images/'.$type[$task->importance].'.png') }}" alt="{{ $type[$task->importance] }}">
+                                    <img src="{{ asset('images/'.$type[$task->task->importance].'.png') }}" alt="{{ $type[$task->task->importance] }}">
                                     <span class="app-name">
-                                    <a href="{{ $task->name }}" class="sq-btn {{ $type[$task->importance] }}">
-                                        {{ strtoupper($type[$task->importance]) }}
+                                    <a href="{{ $task->task->name }}" class="sq-btn {{ $type[$task->task->importance] }}">
+                                        {{ strtoupper($type[$task->task->importance]) }}
                                     </a>
                                 </span>
                                 </div>
@@ -94,7 +94,7 @@
                             </div>
                             <span class="description desc_status">{{ __('tasks.status') }}: {{ $task->status }}</span>
                             <br><br>
-                            <span class="description">{{ $task->description }}</span>
+                            <span class="description">{{ $task->task->description }}</span>
                             <br><br>
                         </li>
                     @endif

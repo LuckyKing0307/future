@@ -6,6 +6,7 @@ use App\Models\BotUser;
 use App\Models\Points;
 use App\Models\Tasks;
 use App\Models\User;
+use App\Models\UserTask;
 use App\Orchid\Layouts\Tasks\MessageRows;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -27,14 +28,14 @@ class CheckTasksScreen extends Screen
     public function query($task): iterable
     {
         $telegram = new Api();
-        $task_data = Tasks::find($task);
+        $task_data = UserTask::find($task);
         $photos = [];
         $photo = json_decode($task_data->photo,1);
         if (isset($photo['path'])){
             $photos[] = 'https://future-m.org/storage/'.$photo['path'];
         }
         return [
-            'task' => Tasks::find($task),
+            'task' => UserTask::find($task),
             'photos' => $photos,
         ];
     }
@@ -77,7 +78,7 @@ class CheckTasksScreen extends Screen
 
     public function checked()
     {
-        $task = $this->task;
+        $task = $this->task->userTask()->first();
         $task->status = 'end';
         $task->took_at = Carbon::now();
         $task->save();
@@ -91,7 +92,7 @@ class CheckTasksScreen extends Screen
 
     public function cancel()
     {
-        $task = $this->task;
+        $task = $this->task->userTask()->first();
         $task->status = 'taken';
         $task->save();
     }

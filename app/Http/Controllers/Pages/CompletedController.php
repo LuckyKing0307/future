@@ -8,6 +8,7 @@ use App\Models\History;
 use App\Models\Points;
 use App\Models\Tasks;
 use App\Models\User;
+use App\Models\UserTask;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,11 +23,11 @@ class CompletedController extends Controller
             2 => 'youtube',
         ];
         $user = Auth::user();
-        $completed = Tasks::query()
+        $completed = UserTask::query()
             ->where('user_id', $user->id)->where('status', 'end')
             ->get();
 
-        $inproccess = Tasks::query()
+        $inproccess = UserTask::query()
             ->where('user_id', $user->id)->whereNot('status', 'end')
             ->get();
         return view('pages.completed', compact('completed', 'inproccess', 'type','user'));
@@ -49,18 +50,14 @@ class CompletedController extends Controller
     public function end(Request $request)
     {
         $user = Auth::id();
-        $request->validate([
-            'photo' => 'required|image|max:2048', // до 2 МБ
-        ]);
         $path = $request->file('photo')
             ->store('task-photos', 'public');
         $data = $request->all();
-        $task = Tasks::find($data['id']);
+        $task = UserTask::find($data['id']);
         $task->did_at = Carbon::now();
         $task->status = 'check';
         $task->photo = json_encode(['path' => $path]);;
         $task->save();
-
 
         $history = History::where([
             ['user_id' ,'=', $user],
@@ -76,7 +73,7 @@ class CompletedController extends Controller
     public function cancel(Request $request)
     {
         $data = $request->all();
-        $task = Tasks::find($data['id']);
+        $task = UserTask::find($data['id']);
         $task->user_id = null;
         $task->save();
         return redirect()->route('completed');

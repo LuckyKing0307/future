@@ -25,7 +25,8 @@ class User extends Authenticatable
         'tariff_id',
         'is_referal',
         'recivers',
-        'tariff_at'
+        'tariff_at',
+        'ball'
     ];
 
     /**
@@ -125,8 +126,7 @@ class User extends Authenticatable
 
     public function tasks()
     {
-        $points = Tasks::where(['user_id' => $this->id]);
-        return $points;
+        return $this->hasMany(UserTask::class);
     }
 
     public function refferals()
