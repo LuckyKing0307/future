@@ -77,7 +77,6 @@ class TasksScreen extends Screen
         if ($this->status){
             return [
                 CheckTasksList::class,
-                TasksList::class,
                 Layout::modal('createModal',CreateRows::class)->title('Новая Задача')->applyButton('Создать'),
                 Layout::modal('editModal', EditRows::class)->async('asyncGetGame')
             ];
