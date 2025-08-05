@@ -6,6 +6,7 @@ use App\Models\BotUser;
 use App\Models\Tasks;
 use App\Models\UserTask;
 use App\Orchid\Filters\Tasks\TasksFilter;
+use App\Orchid\Layouts\Tasks\CheckTasksList;
 use App\Orchid\Layouts\Tasks\CreateRows;
 use App\Orchid\Layouts\Tasks\EditRows;
 use App\Orchid\Layouts\Tasks\TasksList;
@@ -75,7 +76,7 @@ class TasksScreen extends Screen
     {
         if ($this->status){
             return [
-                TasksSelections::class,
+                CheckTasksList::class,
                 TasksList::class,
                 Layout::modal('createModal',CreateRows::class)->title('Новая Задача')->applyButton('Создать'),
                 Layout::modal('editModal', EditRows::class)->async('asyncGetGame')
