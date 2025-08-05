@@ -35,6 +35,7 @@ class ParceTasks extends Command
                     'type' => $task->type ?? 'none',
                     'status' => $task->status,
                     'task_id' => $task->id,
+                    'photo' => $task->photo,
                     'took_at' => $task->took_at,
                     'user_id' => $task->user_id,
                 ]);

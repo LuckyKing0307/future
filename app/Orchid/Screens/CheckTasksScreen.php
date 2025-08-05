@@ -78,7 +78,7 @@ class CheckTasksScreen extends Screen
 
     public function checked()
     {
-        $task = $this->task->userTask()->first();
+        $task = $this->task;
         $task->status = 'end';
         $task->took_at = Carbon::now();
         $task->save();
@@ -92,7 +92,7 @@ class CheckTasksScreen extends Screen
 
     public function cancel()
     {
-        $task = $this->task->userTask()->first();
+        $task = $this->task;
         $task->status = 'taken';
         $task->save();
     }
