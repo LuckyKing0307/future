@@ -29,7 +29,6 @@ class CheckTasksScreen extends Screen
     {
         $telegram = new Api();
         $task_data = UserTask::find($task);
-        dd($task_data);
         $photos = [];
         $photo = json_decode($task_data->photo,1);
         if (isset($photo['path'])){
