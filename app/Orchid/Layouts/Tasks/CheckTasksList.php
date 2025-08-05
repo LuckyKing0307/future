@@ -34,7 +34,7 @@ class CheckTasksList extends Table
     {
         return [
             TD::make('name', 'Название')->render(function (UserTask $task){
-                return "<a href='task/$task->id' style='text-decoration: underline;'>{{$task->task->name}}</a>";
+                return "<a href='task/$task->id' style='text-decoration: underline;'>{$task->task->name}</a>";
             }),
             TD::make('description', 'Описание'),
             TD::make('importance', 'Куда')->render(function (UserTask $task){
