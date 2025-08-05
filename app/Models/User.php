@@ -154,7 +154,7 @@ class User extends Authenticatable
     {
         $todayStart = Carbon::today();        // 00:00:00
         $todayEnd = Carbon::today()->endOfDay();
-        return Tasks::where('user_id', $this->id)
+        return UserTask::where('user_id', $this->id)
             ->whereBetween('took_at', [$todayStart, $todayEnd])
             ->count();
     }
