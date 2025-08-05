@@ -74,8 +74,7 @@ class CompletedController extends Controller
     {
         $data = $request->all();
         $task = UserTask::find($data['id']);
-        $task->user_id = null;
-        $task->save();
+        $task->delete();
         return redirect()->route('completed');
     }
 }
