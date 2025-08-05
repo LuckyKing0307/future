@@ -27,13 +27,13 @@ class TasksScreen extends Screen
      * @return array
      */
     public $status;
+
     public function query($status=null): iterable
     {
+        $this->status = $status;
         if (isset($status)){
             return [
-                'tasks' => Tasks::whereHas('userTask', function ($query) use ($status) {
-                    $query->where('status', $status);
-                })->orderBy('created_at', 'desc')->paginate(10),
+                'check_tasks' => UserTask::where('status', $status)->paginate(10),
             ];
         }
         return [
@@ -73,12 +73,21 @@ class TasksScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [
-            TasksSelections::class,
-            TasksList::class,
-            Layout::modal('createModal',CreateRows::class)->title('Новая Задача')->applyButton('Создать'),
-            Layout::modal('editModal', EditRows::class)->async('asyncGetGame')
-        ];
+        if ($this->status){
+            return [
+                TasksSelections::class,
+                TasksList::class,
+                Layout::modal('createModal',CreateRows::class)->title('Новая Задача')->applyButton('Создать'),
+                Layout::modal('editModal', EditRows::class)->async('asyncGetGame')
+            ];
+        }else{
+            return [
+                TasksSelections::class,
+                TasksList::class,
+                Layout::modal('createModal',CreateRows::class)->title('Новая Задача')->applyButton('Создать'),
+                Layout::modal('editModal', EditRows::class)->async('asyncGetGame')
+            ];
+        }
     }
 
     public function create(Request $request)
