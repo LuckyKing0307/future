@@ -18,9 +18,6 @@
 </main>
 
 <x-footer />
-
-@vite('resources/js/app.js')
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.min.js" referrerpolicy="no-referrer"></script>
 @stack('scripts')
