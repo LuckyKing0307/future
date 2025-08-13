@@ -11,6 +11,7 @@ use App\Orchid\Layouts\BotUsers\CreateRows;
 use App\Orchid\Layouts\BotUsers\EditRows;
 use App\Orchid\Layouts\BotUsers\UsersList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
@@ -92,8 +93,18 @@ class BotUsersScreen extends Screen
            $user_data->tariff_id = $request->toArray()['tariff'];
            $user_data->save();
         }
+        if($user['deposit']){
+            Payments::create([
+                'user_id'=>$user['id'],
+                'status'=>'approved',
+                'type'=>'deposit',
+                'sub_type' =>'admin',
+                'text' =>$user['text']!=null ? $user['text'] : '',
+                'tariff'=>null,
+                'amount'=>$user['deposit'],
+            ]);
+        }
         if($user['payment']){
-
             Payments::create([
                 'user_id'=>$user['id'],
                 'status'=>'approved',

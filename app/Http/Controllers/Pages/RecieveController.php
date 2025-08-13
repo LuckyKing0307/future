@@ -24,15 +24,23 @@ class RecieveController extends Controller
             $facebooks = [];
             $youtubes = [];
         }else{
-            $tasks = Tasks::query()
+            $tiktoks = Tasks::query()
                 ->where('status', 'new')
+                ->where('importance', 0)
                 ->whereNotIn('id', $taskIds)
-                ->get()
-                ->groupBy('importance');
-            $public = $tasks->get(0, collect());          // importance = 0
-            $tiktoks = $public;                            // только «нулевые»
-            $facebooks = $public->merge($tasks->get(1, collect()));
-            $youtubes = $public->merge($tasks->get(2, collect()));
+                ->get();
+
+            $facebooks = Tasks::query()
+                ->where('status', 'new')
+                ->where('importance', 1)
+                ->whereNotIn('id', $taskIds)
+                ->get();
+
+            $youtubes = Tasks::query()
+                ->where('status', 'new')
+                ->where('importance', 2)
+                ->whereNotIn('id', $taskIds)
+                ->get();
         }
         return view('pages.recieve', compact('tiktoks', 'facebooks','took_qty', 'youtubes','user'));
     }

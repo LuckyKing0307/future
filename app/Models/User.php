@@ -142,7 +142,8 @@ class User extends Authenticatable
             ->where('payments.user_id', $this->id)
             ->where('payments.status','approved')// убери строку, если нужна сумма по всем
             ->sum('tariffs.price');
-        return $total;
+        $deposit = Payments::where('type','deposit')->where('user_id',$this->id)->sum('amount');
+        return $total+$deposit;
     }
 
     public function tariff()

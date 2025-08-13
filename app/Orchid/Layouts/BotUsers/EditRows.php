@@ -36,6 +36,9 @@ class EditRows extends Rows
             Input::make('user.text')
                 ->title('Текст')
                 ->placeholder('Бонус от админа'),
+            Input::make('user.deposit')
+                ->title('Депозит')
+                ->placeholder('Сколько добавить/отнять 100 это добавить -100 это отнять'),
             Relation::make('tariff')
                 ->fromModel(Tariffs::class, 'name', 'id')
                 ->title('Change tariff')
