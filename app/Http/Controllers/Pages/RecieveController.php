@@ -62,7 +62,7 @@ class RecieveController extends Controller
         $data = $request->all();
         $user = Auth::user();
         $took_qty = (($user->tariff()?->usage)-$user->todayTasks());
-        if ($took_qty>0 and $user->block!=1){
+        if ($took_qty>0 and $user->block!=1 and $user->admin_block!=1){
             $task = Tasks::find($data['id']);
             UserTask::create([
                 'type' => 'task',

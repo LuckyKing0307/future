@@ -12,6 +12,7 @@ use App\Orchid\Layouts\BotUsers\EditRows;
 use App\Orchid\Layouts\BotUsers\UsersList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
@@ -48,10 +49,7 @@ class BotUsersScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            ModalToggle::make('Добавить Сотрудника')
-                ->modal('createModal')
-                ->method('create')
-                ->icon('plus')
+            Button::make('Заблокировать всех')->method('block')
         ];
     }
 
@@ -130,5 +128,10 @@ class BotUsersScreen extends Screen
             $user->block = 1;
             $user->save();
         }
+    }
+    public function block_all()
+    {
+        User::where('block', 0)
+            ->update(['block' => 1]);
     }
 }

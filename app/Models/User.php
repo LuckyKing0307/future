@@ -26,6 +26,7 @@ class User extends Authenticatable
         'is_referal',
         'recivers',
         'tariff_at',
+        'admin_block',
         'ball'
     ];
 
