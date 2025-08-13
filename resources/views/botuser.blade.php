@@ -20,6 +20,37 @@
 </div>
 <div class="layout d-flex justify-content-between">
     <div class="text-black px-2 mt-2 w-100">
+        Рефералы пользователя
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Логин</th>
+                <th scope="col">Заблокирован</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            @foreach($referals as $task)
+
+                <tr>
+                    <th scope="row">{{$task->id}}</th>
+                    <td>{{$task->name}}</td>
+                    <td>{{$task->phone}}</td>
+                    @if($task->block)
+                        <td>Заблокирован</td>
+                    @else
+                        <td>Не Заблокирован</td>
+                    @endif
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="layout d-flex justify-content-between">
+    <div class="text-black px-2 mt-2 w-100">
         Задачи пользователя
         <table class="table">
             <thead class="thead-dark">

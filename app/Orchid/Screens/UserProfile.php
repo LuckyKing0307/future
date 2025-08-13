@@ -28,6 +28,7 @@ class UserProfile extends Screen
         return [
             'user' => $user,
             'tasks' => Tasks::where([['user_id','=',$user->id],['type','=',null]])->get(),
+            'referals' => User::where([['is_referal','=',$user->id]])->get(),
             'dayly_tasks' => Tasks::where([['user_id','=',$user->id],['type', '=', 'dayly']])->get(),
             'points' => Points::where(['user_id'=>$user->id])->sum('points'),
         ];
