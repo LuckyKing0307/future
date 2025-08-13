@@ -98,9 +98,16 @@ class UserProfile extends Screen
     }
     public function block()
     {
-        $this->user->block=1;
-        $this->user->save();
-        User::where('is_referal', $this->user->id)
-            ->update(['block' => 1]);
+        if ($this->user->block==1){
+            $this->user->block=0;
+            $this->user->save();
+            User::where('is_referal', $this->user->id)
+                ->update(['block' => 0]);
+        }else{
+            $this->user->block=1;
+            $this->user->save();
+            User::where('is_referal', $this->user->id)
+                ->update(['block' => 1]);
+        }
     }
 }
