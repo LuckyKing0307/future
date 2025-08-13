@@ -34,7 +34,7 @@
                 levelSeparation: 70,
                 siblingSeparation: 30,
                 subTeeSeparation: 45,
-                animateOnInit: true
+                animateOnInit: false
             },
             node: {
                 HTMLclass: "ref-node"
