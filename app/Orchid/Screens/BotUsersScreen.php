@@ -48,9 +48,17 @@ class BotUsersScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [
-            Button::make('Заблокировать всех')->method('block')
-        ];
+
+        $users = User::where('admin_block', 1);
+        if($users->exists()){
+            return [
+                Button::make('Разблокировать всех')->method('block')
+            ];
+        }else{
+            return [
+                Button::make('Заблокировать всех')->method('block')
+            ];
+        }
     }
 
     /**
