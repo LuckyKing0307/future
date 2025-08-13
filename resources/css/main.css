@@ -101,6 +101,48 @@ form,label{
     line-height: 100%;
     margin-top: 24px;
 }
+/* Контейнер дерева */
+#tree-simple {
+    width: 100%;
+    min-height: 420px;
+    overflow: auto;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+/* Базовые узлы */
+.Treant .node.ref-node .node-content {
+    min-width: 170px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+    box-shadow: 0 1px 0 rgba(0,0,0,.03);
+}
+.Treant .node.ref-node .node-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+.Treant .node.ref-node .node-title {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* Корневой узел (HTMLclass = 'test') */
+.Treant .node.test .node-content {
+    background: #eef6ff;
+    border-color: #bfdbfe;
+}
+.Treant .node.test .node-name { color: #1d4ed8; }
+.Treant .node.test .node-title { color: #2563eb; }
+
+.Treant .connector, .Treant .connector path {
+    shape-rendering: geometricPrecision;
+}
 input {
     border: 1px solid #979797;
     border-radius: 10px;

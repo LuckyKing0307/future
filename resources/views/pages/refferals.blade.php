@@ -18,12 +18,9 @@
         </div>
 
         <small id="copyMsg" style="display: none;">{{ __('invite.copied') }}</small>
-
-        {{-- ==== Список рефералов ==== --}}
         <h3 class="mt-8">{{ __('invite.referrals') }}</h3>
-
+        <div id="tree-simple" class="member-list"></div>
     </div>
-    <div id="tree-simple" class="member-list"></div>
 @endsection
 <script>
     document.addEventListener('DOMContentLoaded', function () {
