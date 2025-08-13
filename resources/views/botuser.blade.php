@@ -37,7 +37,7 @@
                 <tr>
                     <th scope="row">{{$task->id}}</th>
                     <td>{{$task->name}}</td>
-                    <td>{{$task->phone}}</td>
+                    <td><a href='botuser/$user->id' style='text-decoration: underline;'>{{$task->phone}}</a></td>
                     @if($task->block)
                         <td>Заблокирован</td>
                     @else
