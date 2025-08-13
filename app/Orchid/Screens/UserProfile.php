@@ -10,6 +10,7 @@ use App\Orchid\Layouts\Tasks\EveryDayTask;
 use App\Orchid\Layouts\Tasks\MessageRows;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
@@ -25,6 +26,7 @@ class UserProfile extends Screen
     public $user;
     public function query(User $user): iterable
     {
+        $this->user = $user;
         return [
             'user' => $user,
             'tasks' => Tasks::where([['user_id','=',$user->id],['type','=',null]])->get(),
@@ -52,10 +54,7 @@ class UserProfile extends Screen
     public function commandBar(): iterable
     {
         return [
-            ModalToggle::make('Создать ежедневную Задачу')
-                ->modal('create')
-                ->method('create')
-                ->icon('plus')
+            Button::make('Заблокировать всех')->method('block')
         ];
     }
 
@@ -96,5 +95,12 @@ class UserProfile extends Screen
                     'text' => $task_text,
                 ]);
             }
+    }
+    public function block()
+    {
+        $this->user->block=1;
+        $this->user->save();
+        User::where('is_referal', $this->user->id)
+            ->update(['block' => 1]);
     }
 }
