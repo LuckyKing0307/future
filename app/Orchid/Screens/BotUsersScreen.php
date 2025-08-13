@@ -52,11 +52,11 @@ class BotUsersScreen extends Screen
         $users = User::where('admin_block', 1);
         if($users->exists()){
             return [
-                Button::make('Разблокировать всех')->method('block')
+                Button::make('Разблокировать всех')->method('block_all')
             ];
         }else{
             return [
-                Button::make('Заблокировать всех')->method('block')
+                Button::make('Заблокировать всех')->method('block_all')
             ];
         }
     }
