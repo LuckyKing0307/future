@@ -139,11 +139,10 @@ class BotUsersScreen extends Screen
     }
     public function block_all()
     {
-        $users = User::where('admin_block', 1);
-            if($users->exists()){
-                $users->update(['admin_block' => 0]);
-            }else{
-                $users->update(['admin_block' => 1]);
-            }
+        if (User::where('admin_block', 1)->exists()) {
+            User::where('admin_block', 1)->update(['admin_block' => 0]);
+        } else {
+            User::where('admin_block', 0)->update(['admin_block' => 1]);
+        }
     }
 }
